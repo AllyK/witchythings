@@ -1,0 +1,9 @@
+# Normalize all text files to LF in the repo (and in the working tree) so editor
+# re-saves under Windows/OneDrive don't produce whole-file line-ending diffs.
+* text=auto eol=lf
+
+# Explicitly treat site source as text
+*.html text eol=lf
+*.css  text eol=lf
+*.js   text eol=lf
+*.md   text eol=lf
