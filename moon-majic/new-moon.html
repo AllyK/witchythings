@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Moon Rituals, by Sign &middot; Moon Majic</title>
+<style>
+  :root{
+    --bg:#0a0a12;
+    --bg2:#12121f;
+    --ink:#ece8f0;
+    --muted:#a7a1b8;
+    --gold:#e6c988;
+    --gold-dim:#b89a5e;
+    --line:#2a2740;
+    --accent:#c9a2d4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(230,201,136,0.10), transparent 60%),
+      radial-gradient(900px 500px at 80% 10%, rgba(201,162,212,0.08), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:44px 26px 90px;}
+  .crumb{font-size:0.9rem;letter-spacing:0.5px;color:var(--muted);margin-bottom:34px;}
+  .crumb a{color:var(--muted);border-bottom:1px dashed var(--line);}
+  .crumb a:hover{color:var(--gold);}
+
+  .newmoon{
+    width:84px;height:84px;margin:0 auto 24px;border-radius:50%;
+    background:radial-gradient(circle at 50% 50%, #0a0a12 55%, rgba(230,201,136,0.55) 60%, rgba(230,201,136,0.12) 68%, transparent 78%);
+    box-shadow:0 0 50px 4px rgba(230,201,136,0.18);
+  }
+
+  h1{font-size:2.4rem;font-weight:500;text-align:center;margin:0 0 6px;letter-spacing:0.5px;}
+  .sub{text-align:center;color:var(--muted);font-style:italic;margin:0 0 36px;font-size:1.02rem;}
+
+  h2{
+    font-size:1.05rem;text-transform:uppercase;letter-spacing:2.5px;
+    color:var(--gold-dim);font-weight:600;margin:46px 0 4px;
+  }
+  h2 .rule{display:block;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);margin-top:10px;opacity:0.5;}
+  h3{font-size:1.5rem;font-weight:500;margin:38px 0 2px;}
+  .step-num{color:var(--gold);font-style:italic;font-size:1.15rem;display:block;margin-bottom:-2px;}
+
+  p{margin:14px 0;}
+  .muted{color:var(--muted);}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(230,201,136,0.35);}
+  a:hover{border-bottom-color:var(--gold);}
+
+  .card{
+    background:var(--bg2);border:1px solid var(--line);
+    border-radius:14px;padding:20px 24px;margin:20px 0;
+  }
+  .gather{list-style:none;padding:0;margin:14px 0;}
+  .gather li{padding:7px 0 7px 26px;position:relative;border-bottom:1px dashed var(--line);}
+  .gather li:last-child{border-bottom:0;}
+  .gather li::before{content:"\2726";position:absolute;left:0;color:var(--gold-dim);}
+
+  .signs-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:22px 0 10px;}
+  .signs-nav a{
+    font-size:0.92rem;letter-spacing:0.5px;color:var(--gold);
+    border:1px solid rgba(230,201,136,0.3);border-radius:999px;
+    padding:5px 14px;transition:all .25s ease;
+  }
+  .signs-nav a:hover{background:rgba(230,201,136,0.12);border-color:var(--gold);}
+
+  .sign{border-top:1px solid var(--line);padding-top:8px;margin-top:34px;}
+  .sign .tag{
+    font-size:0.78rem;text-transform:uppercase;letter-spacing:1.8px;color:var(--accent);
+    margin:2px 0 10px;
+  }
+  .sign .glyph{color:var(--gold-dim);font-size:1.3rem;margin-right:10px;}
+  .question{
+    border-left:2px solid var(--gold-dim);padding:2px 0 2px 18px;
+    color:var(--muted);font-style:italic;margin:16px 0 6px;
+  }
+  .top{display:block;text-align:right;font-size:0.85rem;margin-top:10px;border-bottom:0;}
+  .safety{
+    border-left:2px solid var(--gold-dim);padding:2px 0 2px 18px;
+    color:var(--muted);font-size:0.96rem;margin:18px 0;
+  }
+  .sources{font-size:0.9rem;color:var(--muted);}
+  .sources a{word-break:break-word;}
+  footer{margin-top:54px;text-align:center;color:var(--muted);font-size:0.85rem;}
+  @media print{
+    body{background:#fff;color:#111;}
+    a{color:#111;}
+    .signs-nav,.top{display:none;}
+    .newmoon{box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+
+  <p class="crumb"><a href="../index.html">Witchy Things</a> / <a href="index.html">Moon Majic</a> / New Moon</p>
+
+  <div class="newmoon" aria-hidden="true"></div>
+  <h1>New Moon Rituals, by Sign</h1>
+  <p class="sub">Beginnings, set in the dark, one sign at a time.</p>
+
+  <p>At the new moon the moon sits between the earth and the sun, so its lit side faces away from us and the night is at its darkest (<a href="https://science.nasa.gov/moon/moon-phases/">NASA</a>). Because the sun and moon are together in the sky at that moment, a new moon always falls in the same sign the sun is passing through. The new moon in Aries arrives in Aries season, the new moon in Taurus in Taurus season, and so on around the year. You can confirm the sign of any new moon at <a href="https://www.almanac.com/moon-sign">Almanac.com</a> and the exact time for your location at <a href="https://www.timeanddate.com/moon/phases/">timeanddate.com</a>.</p>
+
+  <p class="muted">What follows is one base ritual and twelve inflections of it. The practice of setting intentions at the new moon is contemporary, carried by modern witchcraft and pagan communities rather than any single ancient rite (<a href="https://www.pagangrimoire.com/new-moon-rituals/">The Pagan Grimoire</a>). The sign meanings are traditional Western astrology, a symbolic vocabulary for kinds of beginnings. Use the sign the moon is actually in, or simply the section that names what you are trying to start. Only you decide what any of it means.</p>
+
+  <h2>The base ritual<span class="rule"></span></h2>
+  <div class="card">
+    <p style="margin-top:0"><strong>Gather</strong></p>
+    <ul class="gather">
+      <li>One candle, unlit</li>
+      <li>A slip of paper and a pen</li>
+      <li>A small cup of water</li>
+    </ul>
+    <p class="muted" style="margin-bottom:0">Do this within a day or two of the exact new moon, in low light, somewhere you will not be interrupted. Screens off.</p>
+  </div>
+
+  <h3><span class="step-num">One</span>Clear</h3>
+  <p>Sit in the dark with the candle unlit. The new moon gives you nothing to look at, and that is the point. Take a few slow breaths and let the last cycle end. If something from the past month is still gripping you, name it out loud once, then let it sit.</p>
+
+  <h3><span class="step-num">Two</span>Name</h3>
+  <p>Light the candle. Write one intention on the slip of paper, in the present tense, small enough to be real. One is enough. Read it aloud to the flame. This is a naming, not a promise; you are telling yourself what you are turning toward.</p>
+
+  <h3><span class="step-num">Three</span>Tend</h3>
+  <p>Decide on one small act you will take within the next two days that moves toward the intention, and say it out loud. Drink some of the water. Keep the paper somewhere you will see it when the moon is full, about two weeks from now. Blow out the candle.</p>
+
+  <h2>By sign<span class="rule"></span></h2>
+  <div class="signs-nav">
+    <a href="#aries">Aries</a><a href="#taurus">Taurus</a><a href="#gemini">Gemini</a><a href="#cancer">Cancer</a><a href="#leo">Leo</a><a href="#virgo">Virgo</a><a href="#libra">Libra</a><a href="#scorpio">Scorpio</a><a href="#sagittarius">Sagittarius</a><a href="#capricorn">Capricorn</a><a href="#aquarius">Aquarius</a><a href="#pisces">Pisces</a>
+  </div>
+
+  <div class="sign" id="aries">
+    <h3><span class="glyph">&#9800;</span>New Moon in Aries</h3>
+    <p class="tag">Fire &middot; ruled by Mars &middot; usually late March to April</p>
+    <p>Aries is the first sign, and its new moon is the year's rawest beginning: the body, courage, the thing you would do if you stopped waiting for permission. Set an intention that starts with a verb and frightens you a little. Keep it about your own initiative, not anyone else's response.</p>
+    <p>Variation: stand up to speak your intention instead of sitting, and make your Tend act something physical, taken within 24 hours instead of 48.</p>
+    <p class="question">What would I begin this month if I trusted my own nerve?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="taurus">
+    <h3><span class="glyph">&#9801;</span>New Moon in Taurus</h3>
+    <p class="tag">Earth &middot; ruled by Venus &middot; usually late April to May</p>
+    <p>Taurus governs what sustains: money, food, the body at rest, things built slowly and kept. Set an intention about security or pleasure that is patient by design, something measured in months, not days. Taurus does not rush and does not pretend.</p>
+    <p>Variation: bring something from the earth to the ritual, a stone, a plant, a bowl of soil, and eat something slowly and attentively afterward as the first Tend act.</p>
+    <p class="question">What do I want to still be true a year from now, and what small deposit can I make toward it this week?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="gemini">
+    <h3><span class="glyph">&#9802;</span>New Moon in Gemini</h3>
+    <p class="tag">Air &middot; ruled by Mercury &middot; usually late May to June</p>
+    <p>Gemini rules the exchange of words: learning, writing, siblings and neighbors, the questions you have been meaning to ask. Set an intention about communication, a conversation to open, a skill to study, a piece of writing to begin. Curiosity counts as devotion here.</p>
+    <p>Variation: write the intention as a letter, to yourself or to someone you will actually send it to. Sending it can be the Tend act.</p>
+    <p class="question">What conversation have I been postponing, and what is the first sentence of it?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="cancer">
+    <h3><span class="glyph">&#9803;</span>New Moon in Cancer</h3>
+    <p class="tag">Water &middot; ruled by the Moon &middot; usually late June to July</p>
+    <p>The moon is at home in Cancer, and this new moon turns toward home in every sense: family of origin and family of choice, the dwelling itself, what it means to be tended and to tend. Set an intention about belonging, or about care you want to give or finally receive.</p>
+    <p>Variation: do the ritual in the room of your home that feels most yours, and let the cup of water be central; hold it while you speak.</p>
+    <p class="question">Where do I feel most at home, and what would make that feeling more available to me?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="leo">
+    <h3><span class="glyph">&#9804;</span>New Moon in Leo</h3>
+    <p class="tag">Fire &middot; ruled by the Sun &middot; usually late July to August</p>
+    <p>Leo rules the heart and what it dares to show: creative work, play, romance, being seen. Set an intention about something you make or perform, or about letting yourself be visible where you have been hiding. Leo asks for warmth, not perfection.</p>
+    <p>Variation: light a second candle for the work itself, and speak your intention as if to an audience that loves you. The Tend act should be making something, however small.</p>
+    <p class="question">What am I quietly proud of, and what would it take to stop keeping it quiet?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="virgo">
+    <h3><span class="glyph">&#9805;</span>New Moon in Virgo</h3>
+    <p class="tag">Earth &middot; ruled by Mercury &middot; usually late August to September</p>
+    <p>Virgo governs the daily fabric: habits, health, craft, the quality of attention you bring to ordinary work. Set an intention about one routine, kept small on purpose. A ten minute practice actually kept honors Virgo more than a grand system abandoned by Thursday.</p>
+    <p>Variation: before the ritual, tidy the surface you will use, and let that be part of it. Write the intention as a single, precise sentence; revise it once before speaking it.</p>
+    <p class="question">Which small daily act, done for a month, would quietly change everything downstream of it?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="libra">
+    <h3><span class="glyph">&#9806;</span>New Moon in Libra</h3>
+    <p class="tag">Air &middot; ruled by Venus &middot; usually late September to October</p>
+    <p>Libra rules the space between people: partnership, fairness, beauty, the art of the good agreement. Set an intention about a relationship, one to begin, one to rebalance, or one to meet more honestly. Libra also honors intentions about justice and about making things beautiful.</p>
+    <p>Variation: set out two of something, two candles, two cups, to hold the relational shape of the sign. If the intention concerns a specific person, say their name once, kindly.</p>
+    <p class="question">Where in my life is the give and take out of balance, and which side of it is mine to adjust?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="scorpio">
+    <h3><span class="glyph">&#9807;</span>New Moon in Scorpio</h3>
+    <p class="tag">Water &middot; ruled by Mars, and by Pluto in modern astrology &middot; usually late October to November</p>
+    <p>Scorpio governs what is shared and what is hidden: intimacy, entangled resources, grief, the endings that make regeneration possible. Set an intention about depth, a truth to face, a bond to deepen, a debt of any kind to begin unwinding. Scorpio rewards honesty over comfort.</p>
+    <p>Variation: write the intention, read it aloud, then fold the paper closed and keep it somewhere private. Some intentions grow better in the dark, unshared until they have roots.</p>
+    <p class="question">What am I pretending not to know, and what would become possible if I stopped?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="sagittarius">
+    <h3><span class="glyph">&#9808;</span>New Moon in Sagittarius</h3>
+    <p class="tag">Fire &middot; ruled by Jupiter &middot; usually late November to December</p>
+    <p>Sagittarius rules the far horizon: travel, study, belief, the questions big enough to organize a life around. Set an intention about widening, a journey to plan, a subject to pursue, a conviction to test against the world rather than defend from it.</p>
+    <p>Variation: do the ritual facing a window or outside under open sky. Let the Tend act be booking, enrolling, or reading the first chapter, something that commits you to the horizon.</p>
+    <p class="question">What question am I living inside right now, and where would I have to go to ask it properly?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="capricorn">
+    <h3><span class="glyph">&#9809;</span>New Moon in Capricorn</h3>
+    <p class="tag">Earth &middot; ruled by Saturn &middot; usually late December to January</p>
+    <p>Capricorn governs the long climb: work, ambition, reputation, the structures that hold a life up. Set an intention about the mountain you are actually climbing, not the one you think you should be on. Capricorn favors intentions with a schedule attached.</p>
+    <p>Variation: after speaking the intention, write beneath it one date, a realistic milestone within three months. The Tend act is the first block of scheduled time, placed on the calendar tonight.</p>
+    <p class="question">If I kept only one ambition and released the rest, which one would I keep?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="aquarius">
+    <h3><span class="glyph">&#9810;</span>New Moon in Aquarius</h3>
+    <p class="tag">Air &middot; ruled by Saturn, and by Uranus in modern astrology &middot; usually late January to February</p>
+    <p>Aquarius rules the wider circle: friendship, community, the future, the courage to be strange in public. Set an intention about your people, finding them, serving them, or telling them the truth, or about an ideal you want your life to move toward in practice, not just in theory.</p>
+    <p>Variation: speak the intention as if to your future community, whoever they turn out to be. The Tend act should connect you to at least one other person.</p>
+    <p class="question">What future am I hoping someone builds, and what part of it is actually mine to start?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="pisces">
+    <h3><span class="glyph">&#9811;</span>New Moon in Pisces</h3>
+    <p class="tag">Water &middot; ruled by Jupiter, and by Neptune in modern astrology &middot; usually late February to March</p>
+    <p>Pisces is the last sign, and its new moon favors what cannot be gripped: rest, imagination, compassion, dreams and the practice of listening to them. Set an intention about softening, more sleep, more art, more mercy toward yourself or someone else. Pisces intentions are allowed to be feelings rather than plans.</p>
+    <p>Variation: do the ritual just before bed and let the night's sleep be part of it. If you keep a dream log, note whatever comes; the <a href="../dreamwork/index.html">Dreamwork portal</a> pairs naturally with this moon.</p>
+    <p class="question">What am I too tired to want right now, and what would genuine rest look like this month?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <h2>Afterward<span class="rule"></span></h2>
+  <p>When the moon comes full in about two weeks, take the slip of paper out and read it. Whatever has moved, name it plainly; whatever has not, note that too, without a verdict. The <a href="full-moon.html">Full Moon page</a> picks up from there.</p>
+
+  <h2>Sources<span class="rule"></span></h2>
+  <p class="sources">
+    NASA Science, "Moon Phases": <a href="https://science.nasa.gov/moon/moon-phases/">science.nasa.gov/moon/moon-phases</a><br>
+    Almanac.com, "What Sign Is the Moon in Today?": <a href="https://www.almanac.com/moon-sign">almanac.com/moon-sign</a><br>
+    timeanddate.com, "Moon Phases": <a href="https://www.timeanddate.com/moon/phases/">timeanddate.com/moon/phases</a><br>
+    The Pagan Grimoire, "New Moon Rituals: How to Set Intentions": <a href="https://www.pagangrimoire.com/new-moon-rituals/">pagangrimoire.com/new-moon-rituals</a><br>
+    We'Moon, "Full and New Moon Rituals": <a href="https://wemoon.ws/blogs/magical-arts/full-and-new-moon-rituals">wemoon.ws</a>
+  </p>
+
+  <footer><a href="index.html">Back to Moon Majic</a> &middot; <a href="../index.html">Witchy Things</a></footer>
+
+</div>
+</body>
+</html>

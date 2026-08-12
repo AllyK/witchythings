@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moon Majic &middot; Witchy Things</title>
+<style>
+  :root{
+    --bg:#0a0a12;
+    --bg2:#12121f;
+    --ink:#ece8f0;
+    --muted:#a7a1b8;
+    --gold:#e6c988;
+    --gold-dim:#b89a5e;
+    --line:#2a2740;
+    --accent:#c9a2d4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(230,201,136,0.10), transparent 60%),
+      radial-gradient(900px 500px at 80% 10%, rgba(201,162,212,0.08), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:44px 26px 90px;}
+  .crumb{font-size:0.9rem;letter-spacing:0.5px;color:var(--muted);margin-bottom:34px;}
+  .crumb a{color:var(--muted);border-bottom:1px dashed var(--line);}
+  .crumb a:hover{color:var(--gold);}
+
+  .phases{
+    display:flex;justify-content:center;gap:14px;margin:0 auto 26px;
+  }
+  .phase{width:34px;height:34px;border-radius:50%;box-shadow:0 0 22px rgba(230,201,136,0.18);}
+  .phase.new{background:radial-gradient(circle at 50% 50%, #0a0a12 55%, rgba(230,201,136,0.5) 60%, transparent 75%);}
+  .phase.half{background:linear-gradient(90deg, rgba(236,232,240,0.9) 50%, #171726 50%);}
+  .phase.full{background:radial-gradient(circle at 45% 40%, rgba(236,232,240,0.95), rgba(230,201,136,0.6) 70%);}
+
+  h1{font-size:2.5rem;font-weight:500;text-align:center;margin:0 0 6px;letter-spacing:0.5px;}
+  .sub{text-align:center;color:var(--muted);font-style:italic;margin:0 0 40px;font-size:1.02rem;}
+
+  h2{
+    font-size:1.05rem;text-transform:uppercase;letter-spacing:2.5px;
+    color:var(--gold-dim);font-weight:600;margin:46px 0 4px;
+  }
+  h2 .rule{display:block;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);margin-top:10px;opacity:0.5;}
+
+  p{margin:14px 0;}
+  .muted{color:var(--muted);}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(230,201,136,0.35);}
+  a:hover{border-bottom-color:var(--gold);}
+
+  .portal{
+    display:block;color:inherit;border:1px solid var(--line);
+    background:var(--bg2);border-radius:14px;padding:24px 28px;margin:20px 0;
+    transition:all .25s ease;
+  }
+  .portal:hover{
+    border-color:rgba(230,201,136,0.45);
+    box-shadow:0 0 34px rgba(230,201,136,0.10);
+    transform:translateY(-1px);
+  }
+  .portal h3{margin:0 0 4px;font-size:1.45rem;font-weight:500;color:var(--gold);}
+  .portal p{margin:6px 0 0;color:var(--muted);}
+  .portal .glyph{float:right;font-size:1.5rem;color:var(--gold-dim);margin-left:16px;line-height:1;}
+
+  .sources{font-size:0.9rem;color:var(--muted);}
+  .sources a{word-break:break-word;}
+  footer{margin-top:60px;text-align:center;color:var(--muted);font-size:0.85rem;}
+  @media print{
+    body{background:#fff;color:#111;}
+    a{color:#111;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="crumb"><a href="../index.html">Witchy Things</a> / Moon Majic</p>
+
+  <div class="phases" aria-hidden="true">
+    <div class="phase new"></div>
+    <div class="phase half"></div>
+    <div class="phase full"></div>
+  </div>
+  <h1>Moon Majic</h1>
+  <p class="sub">Working with the lunar cycle, one turning at a time.</p>
+
+  <p>The moon offers a rhythm you do not have to invent: roughly 29.5 days from new to full and back again, with an eclipse arriving a few times a year as a scheduled interruption. The practices in this portal borrow that timing. The new moon, when the sky is darkest, is used for beginnings and intentions. The full moon, when the light peaks, is used for noticing what has come to fullness and for putting things down. The eclipse ritual sits apart, built for the rarer moments when the ordinary order breaks and repairs itself.</p>
+
+  <p class="muted">As the moon moves through its cycle it also passes through each zodiac sign for about two to two and a half days at a time, which is why every new and full moon happens in a particular sign. Almanacs have tracked the moon's astrological place for centuries, mostly for planting and harvest timing. You can look up the current moon sign at <a href="https://www.almanac.com/moon-sign">Almanac.com</a> or the <a href="https://www.farmersalmanac.com/calendar/zodiac-calendar">Farmers' Almanac</a>, and exact phase times for your location at <a href="https://www.timeanddate.com/moon/phases/">timeanddate.com</a>.</p>
+
+  <h2>The pages<span class="rule"></span></h2>
+
+  <a class="portal" href="eclipse.html">
+    <span class="glyph">&#9686;</span>
+    <h3>An Eclipse Ritual</h3>
+    <p>Release, stillness, and return, built to match the physical arc of an eclipse. Solo and paired versions, with the folklore it borrows from named and sourced.</p>
+  </a>
+
+  <a class="portal" href="new-moon.html">
+    <span class="glyph">&#9679;</span>
+    <h3>New Moon Rituals, by Sign</h3>
+    <p>A base ritual for beginnings, then twelve variations keyed to the sign the new moon falls in: what each sign asks you to begin, and one question to sit with.</p>
+  </a>
+
+  <a class="portal" href="full-moon.html">
+    <span class="glyph">&#9711;</span>
+    <h3>Full Moon Rituals, by Sign</h3>
+    <p>A base ritual for culmination and release, then twelve variations. Each full moon lights up an axis between two signs, and each section works that tension.</p>
+  </a>
+
+  <h2>What is inherited, what is invented<span class="rule"></span></h2>
+  <p class="muted">Honesty about provenance, in the same spirit as the eclipse page. Timing practices by the moon is genuinely old; almanac traditions of moon-sign timing go back centuries. The specific pairing of new moon with intention setting and full moon with release, as practiced here, is largely contemporary, carried by modern witchcraft, pagan, and wellness communities rather than by any single ancient rite (see <a href="https://www.pagangrimoire.com/new-moon-rituals/">The Pagan Grimoire</a> on the modern practice, and <a href="https://wemoon.ws/blogs/magical-arts/full-and-new-moon-rituals">We'Moon</a> for one lineage of it). The sign correspondences are traditional Western astrology, a symbolic system, not an empirical claim. Treat all of it as a framework for attention. Only the practitioner decides what it means.</p>
+
+  <h2>Sources<span class="rule"></span></h2>
+  <p class="sources">
+    Almanac.com, "What Sign Is the Moon in Today?": <a href="https://www.almanac.com/moon-sign">almanac.com/moon-sign</a><br>
+    Farmers' Almanac, "Zodiac Calendar": <a href="https://www.farmersalmanac.com/calendar/zodiac-calendar">farmersalmanac.com/calendar/zodiac-calendar</a><br>
+    timeanddate.com, "Moon Phases": <a href="https://www.timeanddate.com/moon/phases/">timeanddate.com/moon/phases</a><br>
+    NASA Science, "Moon Phases": <a href="https://science.nasa.gov/moon/moon-phases/">science.nasa.gov/moon/moon-phases</a><br>
+    The Pagan Grimoire, "New Moon Rituals" and "Full Moon Rituals": <a href="https://www.pagangrimoire.com/new-moon-rituals/">pagangrimoire.com</a><br>
+    We'Moon, "Full and New Moon Rituals": <a href="https://wemoon.ws/blogs/magical-arts/full-and-new-moon-rituals">wemoon.ws</a>
+  </p>
+
+  <footer><a href="../index.html">Back to Witchy Things</a></footer>
+
+</div>
+</body>
+</html>

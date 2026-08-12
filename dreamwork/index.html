@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dreamwork &middot; Witchy Things</title>
+<style>
+  :root{
+    --bg:#0a0a12;
+    --bg2:#12121f;
+    --ink:#ece8f0;
+    --muted:#a7a1b8;
+    --gold:#e6c988;
+    --gold-dim:#b89a5e;
+    --line:#2a2740;
+    --accent:#c9a2d4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(201,162,212,0.12), transparent 60%),
+      radial-gradient(900px 500px at 80% 10%, rgba(230,201,136,0.07), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:44px 26px 90px;}
+  .crumb{font-size:0.9rem;letter-spacing:0.5px;color:var(--muted);margin-bottom:34px;}
+  .crumb a{color:var(--muted);border-bottom:1px dashed var(--line);}
+  .crumb a:hover{color:var(--gold);}
+
+  .star{
+    width:84px;height:84px;margin:0 auto 24px;border-radius:50%;position:relative;
+    background:radial-gradient(circle at 50% 50%, rgba(201,162,212,0.5) 0%, rgba(201,162,212,0.12) 55%, transparent 75%);
+    box-shadow:0 0 50px 4px rgba(201,162,212,0.2);
+  }
+  .star::after{
+    content:"\2726";position:absolute;inset:0;display:grid;place-items:center;
+    font-size:2rem;color:var(--accent);
+  }
+
+  h1{font-size:2.4rem;font-weight:500;text-align:center;margin:0 0 6px;letter-spacing:0.5px;}
+  .sub{text-align:center;color:var(--muted);font-style:italic;margin:0 0 36px;font-size:1.02rem;}
+
+  h2{
+    font-size:1.05rem;text-transform:uppercase;letter-spacing:2.5px;
+    color:var(--gold-dim);font-weight:600;margin:46px 0 4px;
+  }
+  h2 .rule{display:block;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);margin-top:10px;opacity:0.5;}
+  h3{font-size:1.5rem;font-weight:500;margin:30px 0 8px;}
+  .step-num{color:var(--gold);font-style:italic;font-size:1.15rem;display:block;margin-bottom:-2px;}
+
+  p{margin:14px 0;}
+  .muted{color:var(--muted);}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(230,201,136,0.35);}
+  a:hover{border-bottom-color:var(--gold);}
+
+  .card{
+    background:var(--bg2);border:1px solid var(--line);
+    border-radius:14px;padding:20px 24px;margin:20px 0;
+  }
+  .principle{
+    border-left:2px solid var(--accent);padding:2px 0 2px 18px;
+    color:var(--muted);margin:18px 0;font-style:italic;
+  }
+  .tool{margin:20px 0;padding-bottom:16px;border-bottom:1px dashed var(--line);}
+  .tool:last-child{border-bottom:0;padding-bottom:0;}
+  .tool .name{color:var(--gold);font-size:1.12rem;}
+  .tool p{margin:6px 0 0;color:var(--muted);}
+
+  .download{
+    display:block;color:inherit;border:1px solid rgba(230,201,136,0.4);
+    background:linear-gradient(180deg,rgba(230,201,136,0.10),rgba(230,201,136,0.03));
+    border-radius:14px;padding:24px 28px;margin:22px 0;
+    transition:all .25s ease;
+  }
+  .download:hover{border-color:var(--gold);box-shadow:0 0 34px rgba(230,201,136,0.12);}
+  .download h3{margin:0 0 4px;color:var(--gold);}
+  .download p{margin:6px 0 0;color:var(--muted);}
+  .download .glyph{float:right;font-size:1.5rem;color:var(--gold-dim);margin-left:16px;line-height:1;}
+
+  .sources{font-size:0.9rem;color:var(--muted);}
+  footer{margin-top:54px;text-align:center;color:var(--muted);font-size:0.85rem;}
+  @media print{
+    body{background:#fff;color:#111;}
+    a{color:#111;}
+    .star{box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="crumb"><a href="../index.html">Witchy Things</a> / Dreamwork</p>
+
+  <div class="star" aria-hidden="true"></div>
+  <h1>Dreamwork</h1>
+  <p class="sub">A feeling-first method for catching dreams and letting them speak.</p>
+
+  <p>Most dream advice starts with the story: what happened, who was there, what it might mean. But for many dreamers the story is the last thing to survive waking, and the first thing to arrive is a feeling, dread, tenderness, anxiety, a color of mood with no plot attached. This method starts there. It treats the feeling of the dream as the most reliable thread, and the narrative as optional. It was built from six published sources, named at the bottom of this page, and it says plainly which parts carry research support and which are craft.</p>
+
+  <h2>Two anchoring principles<span class="rule"></span></h2>
+  <p>From Jeremy Taylor's <em>Dream Work</em> (1983), two rules that keep the whole practice honest:</p>
+  <p class="principle">Only the dreamer can say what a dream means. The test is a felt "aha," a tingle of recognition. No interpretation, from a book, a friend, or an app, is a verdict.</p>
+  <p class="principle">No dream has only one meaning. Dreams are over-determined, so finding one reading never closes the case.</p>
+
+  <h2>The three layers<span class="rule"></span></h2>
+
+  <h3><span class="step-num">One</span>Capture, daily</h3>
+  <p>Feeling first, then story. Before you reach for the plot, write the feeling you woke with and where it sits in the body. Then whatever fragments remain, in the present tense, as if the dream is still happening. Date it. Give it a title from the gut, the first phrase that comes, not the cleverest one. Fragments count; Linda Yael Schiller's image is that dreams are like helium balloons, and you catch the string you can reach. If the dream was anxious, add a distress number from 0 to 10. For the first week or two, do only this. Capture is the whole practice until it is a habit.</p>
+
+  <h3><span class="step-num">Two</span>Understand, when there is time</h3>
+  <p>Pick one dream that tugs at you and use one or two of the tools below. Not every dream, not every tool, not every day.</p>
+  <div class="card">
+    <div class="tool">
+      <span class="name">Hill's image method</span>
+      <p>Describe the central image, re-experience it, associate freely from it, then ask what in waking life triggered it. This is the one approach here with formal research support (Clara Hill, <em>Dream Work in Therapy</em>, APA 2003); the association step matters most.</p>
+    </div>
+    <div class="tool">
+      <span class="name">The IFS lens</span>
+      <p>Treat each dream figure as a part of you (after Richard Schwartz's Internal Family Systems). Locate it in the body. Ask how you feel toward it; curiosity is the signal you are ready. Ask what it protects, and what it fears would happen if it stopped. Anxiety, in this lens, is a protector. This is an extension of Schwartz's model to dreams, not his own protocol.</p>
+    </div>
+    <div class="tool">
+      <span class="name">GAIA, for anxious and nightmare dreams</span>
+      <p>Schiller's sequence: safety first, ground in the present and gather resources; then re-enter the dream and change the ending, starting not where the dream ended but where you woke up; rehearse the new ending; re-check the distress number.</p>
+    </div>
+    <div class="tool">
+      <span class="name">Creative tools, when words stall</span>
+      <p>From Jill Mellick's <em>The Art of Dreaming</em>: paint the dream's energy with your non-dominant hand, amplify one image in three words, become the image and speak as it, or compress the dream into a haiku. The goal is to sustain the mystery, not solve it.</p>
+    </div>
+    <div class="tool">
+      <span class="name">Re-title</span>
+      <p>After working a dream, give it a new title and check for the felt aha (Taylor). If nothing tingles, nothing is wrong; the dream is simply not finished with you.</p>
+    </div>
+  </div>
+
+  <h3><span class="step-num">Three</span>Review, weekly</h3>
+  <p>Once a week, read the titles and dates together, without rereading every entry. Recurring images and recurring feelings are the real signal, more than any single dream. Note what was happening in waking life alongside. If you track distress numbers, watch whether they fall over weeks; with nightmare work, they tend to.</p>
+
+  <h2>The dream log<span class="rule"></span></h2>
+
+  <a class="download" href="dream-log.html" download="dream-log.html">
+    <span class="glyph">&#8595;</span>
+    <h3>Download the offline dream log</h3>
+    <p>A single file that runs entirely in your browser. Capture entries feeling-first, then explore dashboards of your feelings over time, distress trends, and recurring images. Everything is saved locally on your own device; nothing is sent anywhere. Your dreams stay yours.</p>
+  </a>
+  <p class="muted">Right-click the card and choose "Save link as" if your browser opens it instead of downloading, or simply <a href="dream-log.html">open it here</a> and use it in place; it will keep your entries in this browser. To move your log between devices, use the export and import buttons inside the app. Because the log lives in your browser's local storage, clearing site data clears the log, so export a backup now and then.</p>
+
+  <h2>Evidence honesty<span class="rule"></span></h2>
+  <p class="muted">Hill's exploration method has formal research support in therapy studies. The rest, Taylor's principles, Schiller's structures, Mellick's creative practices, the IFS lens, is clinical and creative wisdom rather than tested protocol. Interpretive layers are personal inquiry, not diagnosis, and none of this substitutes for care from a professional when dreams point at something heavy. If nightmares are frequent and connected to trauma, Schiller's <em>PTSDreams</em> is written for exactly that, and working with a trauma-informed therapist is the honest recommendation.</p>
+
+  <h2>Sources<span class="rule"></span></h2>
+  <p class="sources">
+    Clara E. Hill, <em>Dream Work in Therapy: Facilitating Exploration, Insight, and Action</em> (APA, 2003)<br>
+    Jeremy Taylor, <em>Dream Work: Techniques for Discovering the Creative Power in Dreams</em> (Paulist Press, 1983)<br>
+    Linda Yael Schiller, <em>Modern Dreamwork: New Tools for Decoding Your Soul's Wisdom</em> (Llewellyn, 2019)<br>
+    Linda Yael Schiller, <em>PTSDreams: Transform Your Nightmares from Trauma</em> (Llewellyn, 2022)<br>
+    Jill Mellick, <em>The Art of Dreaming: A Creativity Toolbox for Dreamwork</em> (Conari Press, 2001)<br>
+    Richard C. Schwartz, <em>Introduction to Internal Family Systems</em> (Sounds True, 2019)
+  </p>
+
+  <footer><a href="../index.html">Back to Witchy Things</a></footer>
+
+</div>
+</body>
+</html>

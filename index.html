@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Witchy Things</title>
+<style>
+  :root{
+    --bg:#0a0a12;
+    --bg2:#12121f;
+    --ink:#ece8f0;
+    --muted:#a7a1b8;
+    --gold:#e6c988;
+    --gold-dim:#b89a5e;
+    --line:#2a2740;
+    --accent:#c9a2d4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(230,201,136,0.10), transparent 60%),
+      radial-gradient(900px 500px at 80% 10%, rgba(201,162,212,0.08), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:54px 26px 90px;}
+
+  .moon{
+    width:96px;height:96px;margin:0 auto 26px;position:relative;
+    border-radius:50%;
+    background:radial-gradient(circle at 62% 40%, rgba(236,232,240,0.95) 0%, rgba(230,201,136,0.55) 45%, rgba(18,18,31,0.9) 72%),
+               radial-gradient(circle at 50% 50%, rgba(230,201,136,0.5) 54%, rgba(230,201,136,0.12) 62%, transparent 74%);
+    box-shadow:0 0 60px 6px rgba(230,201,136,0.22);
+  }
+
+  h1{
+    font-size:2.7rem;font-weight:500;text-align:center;margin:0 0 6px;
+    letter-spacing:0.5px;
+  }
+  .sub{
+    text-align:center;color:var(--muted);font-style:italic;
+    margin:0 0 44px;font-size:1.02rem;
+  }
+
+  h2{
+    font-size:1.05rem;text-transform:uppercase;letter-spacing:2.5px;
+    color:var(--gold-dim);font-weight:600;margin:46px 0 4px;
+  }
+  h2 .rule{display:block;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);margin-top:10px;opacity:0.5;}
+
+  p{margin:14px 0;}
+  .muted{color:var(--muted);}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(230,201,136,0.35);}
+  a:hover{border-bottom-color:var(--gold);}
+
+  .portal{
+    display:block;color:inherit;border:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:var(--bg2);border-radius:14px;padding:26px 28px;margin:22px 0;
+    transition:all .25s ease;
+  }
+  .portal:hover{
+    border-color:rgba(230,201,136,0.45);
+    box-shadow:0 0 34px rgba(230,201,136,0.10);
+    transform:translateY(-1px);
+  }
+  .portal h3{
+    margin:0 0 6px;font-size:1.55rem;font-weight:500;color:var(--gold);
+  }
+  .portal p{margin:6px 0 0;color:var(--muted);}
+  .portal .glyph{
+    float:right;font-size:1.6rem;color:var(--gold-dim);margin-left:16px;line-height:1;
+  }
+  .portal .paths{
+    margin-top:12px;font-size:0.92rem;color:var(--accent);font-style:italic;
+  }
+
+  footer{margin-top:60px;text-align:center;color:var(--muted);font-size:0.85rem;}
+  @media print{
+    body{background:#fff;color:#111;}
+    a{color:#111;}
+    .moon{box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="moon" aria-hidden="true"></div>
+  <h1>Witchy Things</h1>
+  <p class="sub">Rituals, moon work, and dreamwork. A small portal of practices, kept honestly.</p>
+
+  <p>Everything here follows the same two commitments. First, each practice says plainly where it comes from: what is inherited from a named tradition or source, and what is invented as a personal framework. Second, only the practitioner decides what any of it means. Nothing on these pages is a verdict.</p>
+
+  <h2>The portals<span class="rule"></span></h2>
+
+  <a class="portal" href="moon-majic/index.html">
+    <span class="glyph">&#9789;</span>
+    <h3>Moon Majic</h3>
+    <p>Working with the lunar cycle: an eclipse ritual for scheduled interruptions, new moon intentions and full moon releases, each keyed to the sign the moon is in.</p>
+    <p class="paths">Eclipse ritual &middot; New moon by sign &middot; Full moon by sign</p>
+  </a>
+
+  <a class="portal" href="dreamwork/index.html">
+    <span class="glyph">&#10022;</span>
+    <h3>Dreamwork</h3>
+    <p>A feeling-first method for capturing and working dreams, built from six named sources, with a downloadable dream log that keeps everything on your own device.</p>
+    <p class="paths">The method &middot; Going deeper tools &middot; Offline dream log with dashboards</p>
+  </a>
+
+  <footer>Witchy Things &middot; a personal collection, shared freely. Take what serves you and leave the rest.</footer>
+
+</div>
+</body>
+</html>

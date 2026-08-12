@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dream Log</title>
+<style>
+  :root{
+    --bg:#0a0a12;
+    --bg2:#12121f;
+    --bg3:#191929;
+    --ink:#ece8f0;
+    --muted:#a7a1b8;
+    --gold:#e6c988;
+    --gold-dim:#b89a5e;
+    --mark:#b8882c;
+    --mark2:#a862c0;
+    --line:#2a2740;
+    --accent:#c9a2d4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(201,162,212,0.10), transparent 60%),
+      radial-gradient(900px 500px at 80% 10%, rgba(230,201,136,0.07), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:840px;margin:0 auto;padding:38px 22px 90px;}
+
+  header{text-align:center;margin-bottom:26px;}
+  .star{
+    width:64px;height:64px;margin:0 auto 14px;border-radius:50%;position:relative;
+    background:radial-gradient(circle at 50% 50%, rgba(201,162,212,0.5) 0%, rgba(201,162,212,0.12) 55%, transparent 75%);
+    box-shadow:0 0 40px 4px rgba(201,162,212,0.2);
+  }
+  .star::after{content:"\2726";position:absolute;inset:0;display:grid;place-items:center;font-size:1.5rem;color:var(--accent);}
+  h1{font-size:2rem;font-weight:500;margin:0 0 2px;letter-spacing:0.5px;}
+  .sub{color:var(--muted);font-style:italic;margin:0;font-size:0.98rem;}
+
+  nav.tabs{
+    display:flex;gap:6px;justify-content:center;flex-wrap:wrap;
+    background:var(--bg2);border:1px solid var(--line);
+    border-radius:999px;padding:6px;max-width:560px;margin:24px auto;
+  }
+  nav.tabs button{
+    flex:1;border:0;cursor:pointer;background:transparent;color:var(--muted);
+    font-family:inherit;font-size:0.98rem;letter-spacing:0.3px;
+    padding:9px 14px;border-radius:999px;transition:all .25s ease;white-space:nowrap;
+  }
+  nav.tabs button.active{
+    background:linear-gradient(180deg,rgba(230,201,136,0.22),rgba(230,201,136,0.10));
+    color:var(--gold);box-shadow:inset 0 0 0 1px rgba(230,201,136,0.35);
+  }
+
+  .view{display:none;}
+  .view.active{display:block;}
+
+  h2{
+    font-size:0.95rem;text-transform:uppercase;letter-spacing:2.5px;
+    color:var(--gold-dim);font-weight:600;margin:34px 0 10px;
+  }
+  h2 .rule{display:block;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);margin-top:8px;opacity:0.5;}
+  p{margin:12px 0;}
+  .muted{color:var(--muted);}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(230,201,136,0.35);}
+
+  .card{
+    background:var(--bg2);border:1px solid var(--line);
+    border-radius:14px;padding:20px 24px;margin:16px 0;
+  }
+
+  label{display:block;color:var(--muted);font-size:0.92rem;letter-spacing:0.5px;margin:18px 0 6px;}
+  label .why{color:var(--accent);font-style:italic;}
+  input[type=text],input[type=date],textarea,select{
+    width:100%;background:var(--bg3);border:1px solid var(--line);border-radius:10px;
+    color:var(--ink);font-family:inherit;font-size:1rem;padding:10px 14px;line-height:1.5;
+  }
+  textarea{min-height:110px;resize:vertical;}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:rgba(230,201,136,0.5);}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 2px;}
+  .chip{
+    border:1px solid var(--line);border-radius:999px;background:var(--bg3);
+    color:var(--muted);font-family:inherit;font-size:0.94rem;
+    padding:6px 14px;cursor:pointer;transition:all .2s ease;
+  }
+  .chip.on{
+    background:linear-gradient(180deg,rgba(201,162,212,0.25),rgba(201,162,212,0.10));
+    color:var(--accent);border-color:rgba(201,162,212,0.5);
+  }
+  .chip.add{border-style:dashed;}
+
+  .distress-row{display:flex;align-items:center;gap:14px;margin-top:6px;}
+  input[type=range]{flex:1;accent-color:var(--gold);}
+  .distress-val{min-width:2.2em;text-align:center;color:var(--gold);font-size:1.1rem;}
+  .check-row{display:flex;align-items:center;gap:10px;margin:14px 0 0;color:var(--muted);font-size:0.95rem;}
+  .check-row input{accent-color:var(--gold);width:auto;}
+
+  .btn{
+    display:inline-block;border:1px solid rgba(230,201,136,0.4);border-radius:999px;
+    background:linear-gradient(180deg,rgba(230,201,136,0.18),rgba(230,201,136,0.06));
+    color:var(--gold);font-family:inherit;font-size:1rem;letter-spacing:0.5px;
+    padding:10px 26px;cursor:pointer;transition:all .25s ease;
+  }
+  .btn:hover{border-color:var(--gold);box-shadow:0 0 24px rgba(230,201,136,0.12);}
+  .btn.quiet{
+    border-color:var(--line);background:var(--bg3);color:var(--muted);
+    font-size:0.9rem;padding:7px 18px;
+  }
+  .btn.quiet:hover{color:var(--ink);border-color:var(--muted);box-shadow:none;}
+  .btn.danger:hover{color:#e08a8a;border-color:#e08a8a;}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:22px;}
+  .saved-note{color:var(--accent);font-style:italic;font-size:0.95rem;margin-left:6px;}
+
+  .entry{
+    background:var(--bg2);border:1px solid var(--line);border-radius:14px;
+    padding:16px 22px;margin:12px 0;
+  }
+  .entry .head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;cursor:pointer;flex-wrap:wrap;}
+  .entry .title{font-size:1.15rem;color:var(--gold);}
+  .entry .date{color:var(--muted);font-size:0.88rem;white-space:nowrap;}
+  .entry .feelrow{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;}
+  .feel-tag{
+    font-size:0.8rem;letter-spacing:0.5px;color:var(--accent);
+    border:1px solid rgba(201,162,212,0.35);border-radius:999px;padding:2px 10px;
+  }
+  .img-tag{
+    font-size:0.8rem;letter-spacing:0.5px;color:var(--gold-dim);
+    border:1px solid rgba(230,201,136,0.25);border-radius:999px;padding:2px 10px;
+  }
+  .entry .body{display:none;margin-top:14px;border-top:1px dashed var(--line);padding-top:12px;}
+  .entry.open .body{display:block;}
+  .entry .body h4{margin:12px 0 2px;font-size:0.82rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold-dim);font-weight:600;}
+  .entry .body p{margin:2px 0 10px;white-space:pre-wrap;}
+  .entry .distress-badge{color:var(--gold);font-size:0.85rem;}
+  .entry .tools{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+
+  .filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0;}
+  .filters .chip.on{color:var(--gold);border-color:rgba(230,201,136,0.5);background:linear-gradient(180deg,rgba(230,201,136,0.18),rgba(230,201,136,0.06));}
+  .filters input[type=text]{flex:1;min-width:160px;width:auto;}
+
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0;}
+  .tile{
+    background:var(--bg2);border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;text-align:center;
+  }
+  .tile .num{font-size:1.9rem;color:var(--gold);line-height:1.2;}
+  .tile .lab{color:var(--muted);font-size:0.82rem;letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
+
+  .chart-card{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:16px 0;}
+  .chart-card h3{margin:0 0 2px;font-size:1.1rem;font-weight:500;color:var(--ink);}
+  .chart-card .desc{color:var(--muted);font-size:0.88rem;margin:0 0 12px;}
+  .chart-card svg{width:100%;height:auto;display:block;}
+  .bar-label{fill:#ece8f0;font-size:13px;font-family:inherit;}
+  .bar-val{fill:#a7a1b8;font-size:12px;}
+  .axis-t{fill:#a7a1b8;font-size:11px;}
+  .gridline{stroke:#2a2740;stroke-width:1;}
+
+  .tooltip{
+    position:fixed;pointer-events:none;z-index:10;display:none;
+    background:#191929;border:1px solid var(--line);border-radius:10px;
+    padding:8px 12px;font-size:0.88rem;color:var(--ink);max-width:260px;
+    box-shadow:0 6px 24px rgba(0,0,0,0.5);
+  }
+  .tooltip .t-date{color:var(--muted);font-size:0.8rem;}
+
+  .empty{
+    text-align:center;color:var(--muted);font-style:italic;
+    border:1px dashed var(--line);border-radius:14px;padding:34px 20px;margin:16px 0;
+  }
+
+  .week{margin:22px 0;}
+  .week h3{margin:0 0 4px;font-size:1.15rem;font-weight:500;color:var(--gold);}
+  .week .wk-meta{color:var(--muted);font-size:0.9rem;margin:0 0 8px;}
+  .week ul{list-style:none;padding:0;margin:8px 0;}
+  .week li{padding:6px 0 6px 24px;position:relative;border-bottom:1px dashed var(--line);}
+  .week li:last-child{border-bottom:0;}
+  .week li::before{content:"\2726";position:absolute;left:0;color:var(--gold-dim);font-size:0.8rem;top:9px;}
+  .week li .lt{color:var(--ink);}
+  .week li .ld{color:var(--muted);font-size:0.85rem;}
+  .week textarea{min-height:70px;margin-top:8px;}
+
+  footer{margin-top:54px;text-align:center;color:var(--muted);font-size:0.84rem;}
+  footer a{color:var(--muted);}
+
+  @media print{
+    body{background:#fff;color:#111;}
+    nav.tabs,.btn,.filters,.tools{display:none !important;}
+    .view{display:block !important;}
+    .card,.entry,.chart-card,.tile{border-color:#ccc;background:#fff;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="star" aria-hidden="true"></div>
+    <h1>Dream Log</h1>
+    <p class="sub">Feeling first, then story. Everything stays on this device.</p>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button id="tab-capture" class="active" onclick="show('capture')">Capture</button>
+    <button id="tab-journal" onclick="show('journal')">Journal</button>
+    <button id="tab-dash" onclick="show('dash')">Dashboards</button>
+    <button id="tab-review" onclick="show('review')">Weekly Review</button>
+  </nav>
+
+  <!-- CAPTURE -->
+  <section class="view active" id="view-capture">
+    <div class="card">
+      <p class="muted" style="margin-top:0">Write in the present tense, as if the dream is still happening. Fragments count. The feeling comes before the story on purpose: it is the most reliable thread out of a dream, and often the only one left.</p>
+
+      <label for="f-date">Date of the dream</label>
+      <input type="date" id="f-date">
+
+      <label>The feeling I woke with <span class="why">&middot; start here</span></label>
+      <div class="chips" id="feel-chips"></div>
+
+      <label for="f-body">Where it sits in the body</label>
+      <input type="text" id="f-body" placeholder="chest tight, jaw, stomach dropped...">
+
+      <div class="check-row">
+        <input type="checkbox" id="f-anx" onchange="document.getElementById('distress-wrap').style.display=this.checked?'flex':'none'">
+        <label for="f-anx" style="margin:0;display:inline;">This dream was anxious or distressing</label>
+      </div>
+      <div class="distress-row" id="distress-wrap" style="display:none">
+        <span class="muted" style="font-size:0.9rem">Distress 0&ndash;10</span>
+        <input type="range" id="f-distress" min="0" max="10" value="5" oninput="document.getElementById('dval').textContent=this.value">
+        <span class="distress-val" id="dval">5</span>
+      </div>
+
+      <label for="f-title">Title, from the gut <span class="why">&middot; the first phrase that comes</span></label>
+      <input type="text" id="f-title" placeholder="The hallway that keeps going">
+
+      <label for="f-dream">The dream, in the present tense</label>
+      <textarea id="f-dream" placeholder="I am standing in..."></textarea>
+
+      <label for="f-images">Images and symbols <span class="why">&middot; comma separated, these feed the dashboards</span></label>
+      <input type="text" id="f-images" placeholder="water, my grandmother's house, a locked door">
+
+      <label for="f-waking">What is happening in waking life</label>
+      <textarea id="f-waking" style="min-height:70px" placeholder="One or two lines is plenty."></textarea>
+
+      <label for="f-retitle">New title after working it <span class="why">&middot; optional, for when you return with the tools</span></label>
+      <input type="text" id="f-retitle" placeholder="Leave blank until this dream has been worked">
+
+      <div class="btn-row">
+        <button class="btn" id="save-btn" onclick="saveEntry()">Save entry</button>
+        <button class="btn quiet" id="cancel-edit" style="display:none" onclick="cancelEdit()">Cancel edit</button>
+        <span class="saved-note" id="saved-note"></span>
+      </div>
+    </div>
+    <p class="muted" style="font-size:0.9rem">Your entries are saved in this browser's local storage and never leave your device. Clearing the browser's site data clears the log, so export a backup now and then from the Journal tab.</p>
+  </section>
+
+  <!-- JOURNAL -->
+  <section class="view" id="view-journal">
+    <div class="filters">
+      <input type="text" id="search" placeholder="Search titles, dreams, images..." oninput="renderJournal()">
+      <button class="chip" id="flt-anx" onclick="toggleAnxFilter()">anxious only</button>
+      <button class="btn quiet" onclick="exportJSON()">Export backup</button>
+      <button class="btn quiet" onclick="document.getElementById('import-file').click()">Import</button>
+      <input type="file" id="import-file" accept=".json,application/json" style="display:none" onchange="importJSON(this)">
+    </div>
+    <div id="journal-list"></div>
+  </section>
+
+  <!-- DASHBOARDS -->
+  <section class="view" id="view-dash">
+    <div class="filters" id="range-row">
+      <span class="muted" style="font-size:0.9rem">Show:</span>
+      <button class="chip" data-range="30" onclick="setRange(30)">last 30 days</button>
+      <button class="chip" data-range="90" onclick="setRange(90)">last 90 days</button>
+      <button class="chip on" data-range="0" onclick="setRange(0)">all time</button>
+    </div>
+    <div id="dash-body"></div>
+  </section>
+
+  <!-- REVIEW -->
+  <section class="view" id="view-review">
+    <p class="muted">Read the titles and dates together, without rereading every entry. Recurring images and recurring feelings are the real signal. What was happening in your life that week? Are the distress numbers falling?</p>
+    <div id="review-body"></div>
+  </section>
+
+  <footer>
+    Part of <a href="index.html">Witchy Things &middot; Dreamwork</a>. Method after Hill, Taylor, Schiller, Mellick, and Schwartz.<br>
+    Only the dreamer can say what a dream means.
+  </footer>
+
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+"use strict";
+var KEY = 'witchy-dream-log-v1';
+var FEELINGS = ['anxious','afraid','sad','tender','angry','ashamed','confused','longing','numb','calm','curious','joyful'];
+var state = load();
+var selectedFeelings = [];
+var editingId = null;
+var anxOnly = false;
+var rangeDays = 0;
+
+function load(){
+  try{
+    var raw = localStorage.getItem(KEY);
+    if(raw){ var d = JSON.parse(raw); if(d && Array.isArray(d.entries)) return {entries:d.entries, reviews:d.reviews||{}}; }
+  }catch(e){}
+  return {entries:[], reviews:{}};
+}
+function persist(){
+  try{ localStorage.setItem(KEY, JSON.stringify(state)); }
+  catch(e){ alert('Could not save. Your browser may be blocking local storage (private browsing?) or it is full.'); }
+}
+function esc(s){
+  return String(s==null?'':s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+function todayStr(){
+  var d = new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function fmtDate(iso){
+  var p = iso.split('-');
+  var d = new Date(Number(p[0]), Number(p[1])-1, Number(p[2]));
+  return d.toLocaleDateString(undefined, {weekday:'short', year:'numeric', month:'short', day:'numeric'});
+}
+
+/* ---------- tabs ---------- */
+function show(v){
+  ['capture','journal','dash','review'].forEach(function(k){
+    document.getElementById('view-'+k).classList.toggle('active', k===v);
+    document.getElementById('tab-'+k).classList.toggle('active', k===v);
+  });
+  if(v==='journal') renderJournal();
+  if(v==='dash') renderDash();
+  if(v==='review') renderReview();
+}
+
+/* ---------- capture ---------- */
+function renderChips(){
+  var box = document.getElementById('feel-chips');
+  box.innerHTML = '';
+  var all = FEELINGS.slice();
+  selectedFeelings.forEach(function(f){ if(all.indexOf(f)===-1) all.push(f); });
+  all.forEach(function(f){
+    var b = document.createElement('button');
+    b.type='button'; b.className = 'chip' + (selectedFeelings.indexOf(f)>=0 ? ' on' : '');
+    b.textContent = f;
+    b.onclick = function(){
+      var i = selectedFeelings.indexOf(f);
+      if(i>=0) selectedFeelings.splice(i,1); else selectedFeelings.push(f);
+      renderChips();
+    };
+    box.appendChild(b);
+  });
+  var add = document.createElement('button');
+  add.type='button'; add.className='chip add'; add.textContent='+ my own word';
+  add.onclick = function(){
+    var w = prompt('Name the feeling in your own word:');
+    if(w){ w = w.trim().toLowerCase(); if(w && selectedFeelings.indexOf(w)===-1) selectedFeelings.push(w); renderChips(); }
+  };
+  box.appendChild(add);
+}
+
+function saveEntry(){
+  var title = document.getElementById('f-title').value.trim();
+  var dream = document.getElementById('f-dream').value.trim();
+  if(selectedFeelings.length===0 && !dream && !title){
+    flash('Nothing to save yet. Even one feeling word is an entry.');
+    return;
+  }
+  var anx = document.getElementById('f-anx').checked;
+  var entry = {
+    id: editingId || ('d'+Math.random().toString(36).slice(2,10)+Date.now().toString(36)),
+    date: document.getElementById('f-date').value || todayStr(),
+    feelings: selectedFeelings.slice(),
+    body: document.getElementById('f-body').value.trim(),
+    distress: anx ? Number(document.getElementById('f-distress').value) : null,
+    title: title,
+    retitle: document.getElementById('f-retitle').value.trim(),
+    dream: dream,
+    images: document.getElementById('f-images').value.split(',').map(function(s){return s.trim().toLowerCase();}).filter(Boolean),
+    waking: document.getElementById('f-waking').value.trim(),
+    created: editingId ? (state.entries.find(function(e){return e.id===editingId;})||{}).created || Date.now() : Date.now()
+  };
+  if(editingId){
+    state.entries = state.entries.map(function(e){ return e.id===editingId ? entry : e; });
+  } else {
+    state.entries.push(entry);
+  }
+  persist();
+  clearForm();
+  flash(editingId ? 'Entry updated.' : 'Caught. ' + (entry.title ? '"'+entry.title+'" is safe.' : 'The fragment is safe.'));
+  editingId = null;
+  document.getElementById('cancel-edit').style.display='none';
+  document.getElementById('save-btn').textContent='Save entry';
+}
+function clearForm(){
+  selectedFeelings = [];
+  renderChips();
+  document.getElementById('f-date').value = todayStr();
+  ['f-body','f-title','f-dream','f-images','f-waking','f-retitle'].forEach(function(id){ document.getElementById(id).value=''; });
+  document.getElementById('f-anx').checked = false;
+  document.getElementById('distress-wrap').style.display='none';
+  document.getElementById('f-distress').value = 5;
+  document.getElementById('dval').textContent = '5';
+}
+function cancelEdit(){
+  editingId = null; clearForm();
+  document.getElementById('cancel-edit').style.display='none';
+  document.getElementById('save-btn').textContent='Save entry';
+  flash('Edit cancelled.');
+}
+function flash(msg){
+  var n = document.getElementById('saved-note');
+  n.textContent = msg;
+  setTimeout(function(){ if(n.textContent===msg) n.textContent=''; }, 4000);
+}
+
+/* ---------- journal ---------- */
+function toggleAnxFilter(){
+  anxOnly = !anxOnly;
+  document.getElementById('flt-anx').classList.toggle('on', anxOnly);
+  renderJournal();
+}
+function renderJournal(){
+  var box = document.getElementById('journal-list');
+  var q = document.getElementById('search').value.trim().toLowerCase();
+  var list = state.entries.slice().sort(function(a,b){ return a.date<b.date?1:(a.date>b.date?-1:b.created-a.created); });
+  if(anxOnly) list = list.filter(function(e){ return e.distress!=null; });
+  if(q) list = list.filter(function(e){
+    return [e.title,e.retitle,e.dream,e.waking,e.body,(e.feelings||[]).join(' '),(e.images||[]).join(' ')].join(' ').toLowerCase().indexOf(q)>=0;
+  });
+  if(list.length===0){
+    box.innerHTML = '<div class="empty">' + (state.entries.length===0 ?
+      'No dreams caught yet. When one arrives, start with the feeling.' :
+      'Nothing matches that search.') + '</div>';
+    return;
+  }
+  box.innerHTML = list.map(function(e){
+    var feels = (e.feelings||[]).map(function(f){return '<span class="feel-tag">'+esc(f)+'</span>';}).join('');
+    var imgs = (e.images||[]).map(function(t){return '<span class="img-tag">'+esc(t)+'</span>';}).join('');
+    var dbadge = e.distress!=null ? '<span class="distress-badge">distress '+e.distress+'/10</span>' : '';
+    var title = e.retitle ? esc(e.retitle)+' <span class="muted" style="font-size:0.85rem">(first title: '+esc(e.title||'untitled')+')</span>' : esc(e.title||'untitled');
+    return '<div class="entry" id="en-'+e.id+'">'
+      + '<div class="head" onclick="document.getElementById(\'en-'+e.id+'\').classList.toggle(\'open\')">'
+      + '<span class="title">'+title+'</span><span class="date">'+fmtDate(e.date)+'</span></div>'
+      + '<div class="feelrow">'+feels+dbadge+'</div>'
+      + '<div class="body">'
+      + (e.body ? '<h4>In the body</h4><p>'+esc(e.body)+'</p>' : '')
+      + (e.dream ? '<h4>The dream</h4><p>'+esc(e.dream)+'</p>' : '')
+      + (imgs ? '<h4>Images</h4><div class="feelrow">'+imgs+'</div>' : '')
+      + (e.waking ? '<h4>Waking life</h4><p>'+esc(e.waking)+'</p>' : '')
+      + '<div class="tools">'
+      + '<button class="btn quiet" onclick="editEntry(\''+e.id+'\');event.stopPropagation();">Edit / work this dream</button>'
+      + '<button class="btn quiet danger" onclick="delEntry(\''+e.id+'\');event.stopPropagation();">Delete</button>'
+      + '</div></div></div>';
+  }).join('');
+}
+function editEntry(id){
+  var e = state.entries.find(function(x){return x.id===id;});
+  if(!e) return;
+  editingId = id;
+  selectedFeelings = (e.feelings||[]).slice();
+  renderChips();
+  document.getElementById('f-date').value = e.date;
+  document.getElementById('f-body').value = e.body||'';
+  document.getElementById('f-title').value = e.title||'';
+  document.getElementById('f-dream').value = e.dream||'';
+  document.getElementById('f-images').value = (e.images||[]).join(', ');
+  document.getElementById('f-waking').value = e.waking||'';
+  document.getElementById('f-retitle').value = e.retitle||'';
+  var anx = e.distress!=null;
+  document.getElementById('f-anx').checked = anx;
+  document.getElementById('distress-wrap').style.display = anx?'flex':'none';
+  if(anx){ document.getElementById('f-distress').value = e.distress; document.getElementById('dval').textContent = e.distress; }
+  document.getElementById('cancel-edit').style.display='inline-block';
+  document.getElementById('save-btn').textContent='Update entry';
+  show('capture');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function delEntry(id){
+  var e = state.entries.find(function(x){return x.id===id;});
+  if(!e) return;
+  if(!confirm('Delete "'+(e.retitle||e.title||'untitled')+'" from '+e.date+'? This cannot be undone.')) return;
+  state.entries = state.entries.filter(function(x){return x.id!==id;});
+  persist(); renderJournal();
+}
+
+/* ---------- export / import ---------- */
+function exportJSON(){
+  var blob = new Blob([JSON.stringify(state, null, 2)], {type:'application/json'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'dream-log-backup-'+todayStr()+'.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function importJSON(input){
+  var f = input.files && input.files[0];
+  if(!f) return;
+  var r = new FileReader();
+  r.onload = function(){
+    try{
+      var d = JSON.parse(r.result);
+      if(!d || !Array.isArray(d.entries)) throw new Error('bad');
+      var have = {};
+      state.entries.forEach(function(e){ have[e.id]=true; });
+      var added = 0;
+      d.entries.forEach(function(e){ if(e && e.id && !have[e.id]){ state.entries.push(e); added++; } });
+      if(d.reviews){ Object.keys(d.reviews).forEach(function(k){ if(!state.reviews[k]) state.reviews[k]=d.reviews[k]; }); }
+      persist(); renderJournal();
+      alert('Imported '+added+' new entr'+(added===1?'y':'ies')+'. Existing entries were kept.');
+    }catch(err){ alert('That file does not look like a dream log backup.'); }
+    input.value='';
+  };
+  r.readAsText(f);
+}
+
+/* ---------- dashboards ---------- */
+function setRange(days){
+  rangeDays = days;
+  document.querySelectorAll('#range-row .chip').forEach(function(c){
+    c.classList.toggle('on', Number(c.getAttribute('data-range'))===days);
+  });
+  renderDash();
+}
+function inRange(e){
+  if(!rangeDays) return true;
+  var cutoff = new Date(); cutoff.setDate(cutoff.getDate()-rangeDays);
+  return new Date(e.date+'T12:00:00') >= cutoff;
+}
+function renderDash(){
+  var box = document.getElementById('dash-body');
+  var list = state.entries.filter(inRange).sort(function(a,b){ return a.date<b.date?-1:1; });
+  if(list.length===0){
+    box.innerHTML = '<div class="empty">Nothing here yet' + (rangeDays? ' in this time range':'') + '. The dashboards wake up after your first saved dream.</div>';
+    return;
+  }
+  /* stats */
+  var feelCount = {};
+  list.forEach(function(e){ (e.feelings||[]).forEach(function(f){ feelCount[f]=(feelCount[f]||0)+1; }); });
+  var topFeel = Object.keys(feelCount).sort(function(a,b){return feelCount[b]-feelCount[a];})[0] || '&mdash;';
+  var dEntries = list.filter(function(e){return e.distress!=null;});
+  var avgD = dEntries.length ? (dEntries.reduce(function(s,e){return s+e.distress;},0)/dEntries.length).toFixed(1) : null;
+  var wk = new Date(); wk.setDate(wk.getDate()-7);
+  var thisWeek = state.entries.filter(function(e){ return new Date(e.date+'T12:00:00')>=wk; }).length;
+
+  var html = '<div class="tiles">'
+    + tile(list.length, 'dreams caught')
+    + tile(thisWeek, 'in the last 7 days')
+    + tile(esc(topFeel), 'most frequent feeling')
+    + (avgD!=null ? tile(avgD, 'avg distress (0-10)') : tile('&mdash;','avg distress (0-10)'))
+    + '</div>';
+
+  html += feelingsChart(feelCount);
+  html += distressChart(dEntries);
+  html += imagesPanel(list);
+  box.innerHTML = html;
+  wireTooltips();
+}
+function tile(n,l){ return '<div class="tile"><div class="num">'+n+'</div><div class="lab">'+l+'</div></div>'; }
+
+function feelingsChart(fc){
+  var pairs = Object.keys(fc).map(function(k){return [k,fc[k]];}).sort(function(a,b){return b[1]-a[1];});
+  if(pairs.length===0) return '';
+  var shown = pairs.slice(0,8);
+  var other = pairs.slice(8).reduce(function(s,p){return s+p[1];},0);
+  if(other>0) shown.push(['other',other]);
+  var max = shown[0][1];
+  var rowH = 34, w = 760, labelW = 130, pad = 6;
+  var h = shown.length*rowH + 10;
+  var bars = shown.map(function(p,i){
+    var bw = Math.max(4, Math.round((w-labelW-60)*(p[1]/max)));
+    var y = i*rowH+8;
+    return '<text class="bar-label" x="'+(labelW-10)+'" y="'+(y+15)+'" text-anchor="end">'+esc(p[0])+'</text>'
+      + '<rect class="hov" data-tip="'+esc(p[0])+': '+p[1]+' dream'+(p[1]===1?'':'s')+'" x="'+labelW+'" y="'+y+'" width="'+bw+'" height="20" rx="4" fill="#b8882c"></rect>'
+      + '<text class="bar-val" x="'+(labelW+bw+8)+'" y="'+(y+15)+'">'+p[1]+'</text>';
+  }).join('');
+  return '<div class="chart-card"><h3>Feelings, by frequency</h3>'
+    + '<p class="desc">How often each waking feeling appears across ' + 'the selected range. Recurring feelings are signal.</p>'
+    + '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Bar chart of dream feelings by frequency">'+bars+'</svg></div>';
+}
+
+function distressChart(dE){
+  if(dE.length===0){
+    return '<div class="chart-card"><h3>Distress over time</h3><p class="desc">No anxious dreams logged'+(rangeDays?' in this range':'')+'. May it stay that way.</p></div>';
+  }
+  var w=760, h=220, padL=40, padR=16, padT=14, padB=30;
+  var xs = dE.map(function(e){ return new Date(e.date+'T12:00:00').getTime(); });
+  var minX = Math.min.apply(null,xs), maxX = Math.max.apply(null,xs);
+  if(minX===maxX){ minX-=86400000; maxX+=86400000; }
+  function X(t){ return padL + (w-padL-padR)*(t-minX)/(maxX-minX); }
+  function Y(v){ return padT + (h-padT-padB)*(1 - v/10); }
+  var grid='', lbls='';
+  [0,5,10].forEach(function(v){
+    grid += '<line class="gridline" x1="'+padL+'" x2="'+(w-padR)+'" y1="'+Y(v)+'" y2="'+Y(v)+'"></line>';
+    lbls += '<text class="axis-t" x="'+(padL-8)+'" y="'+(Y(v)+4)+'" text-anchor="end">'+v+'</text>';
+  });
+  var pts = dE.map(function(e,i){ return [X(xs[i]), Y(e.distress), e]; });
+  var path = pts.map(function(p,i){ return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1); }).join(' ');
+  var dots = pts.map(function(p){
+    var e=p[2];
+    return '<circle class="hov" data-tip="'+esc(e.retitle||e.title||'untitled')+' &middot; '+e.distress+'/10" data-date="'+fmtDate(e.date)+'" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="5" fill="#b8882c" stroke="#12121f" stroke-width="2"></circle>';
+  }).join('');
+  var first = fmtDate(dE[0].date), last = fmtDate(dE[dE.length-1].date);
+  return '<div class="chart-card"><h3>Distress over time</h3>'
+    + '<p class="desc">Each dot is one anxious dream, 0 to 10. With steady capture and nightmare work, this line tends to drift down.</p>'
+    + '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Line chart of dream distress ratings over time">'
+    + grid + lbls
+    + '<text class="axis-t" x="'+padL+'" y="'+(h-8)+'">'+first+'</text>'
+    + '<text class="axis-t" x="'+(w-padR)+'" y="'+(h-8)+'" text-anchor="end">'+last+'</text>'
+    + '<path d="'+path+'" fill="none" stroke="#b8882c" stroke-width="2"></path>'
+    + dots + '</svg></div>';
+}
+
+function imagesPanel(list){
+  var ic = {};
+  list.forEach(function(e){ (e.images||[]).forEach(function(t){ ic[t]=(ic[t]||0)+1; }); });
+  var pairs = Object.keys(ic).map(function(k){return [k,ic[k]];}).sort(function(a,b){return b[1]-a[1];}).slice(0,20);
+  var inner;
+  if(pairs.length===0){
+    inner = '<p class="desc">No images tagged yet. Add comma separated images when you capture, and the recurring ones will surface here.</p>';
+  } else {
+    inner = '<p class="desc">The images that keep coming back. A recurring image across weeks matters more than any single dream.</p><div class="feelrow" style="gap:8px">'
+      + pairs.map(function(p){
+          var size = p[1]>=5 ? '1.15rem' : p[1]>=3 ? '1.02rem' : '0.88rem';
+          return '<span class="img-tag" style="font-size:'+size+'">'+esc(p[0])+' &middot; '+p[1]+'</span>';
+        }).join('') + '</div>';
+  }
+  return '<div class="chart-card"><h3>Recurring images</h3>'+inner+'</div>';
+}
+
+function wireTooltips(){
+  var tip = document.getElementById('tooltip');
+  document.querySelectorAll('.hov').forEach(function(el){
+    el.addEventListener('mousemove', function(ev){
+      var d = el.getAttribute('data-date');
+      tip.innerHTML = (d?'<div class="t-date">'+d+'</div>':'') + el.getAttribute('data-tip');
+      tip.style.display='block';
+      tip.style.left = Math.min(ev.clientX+14, window.innerWidth-280)+'px';
+      tip.style.top = (ev.clientY+14)+'px';
+    });
+    el.addEventListener('mouseleave', function(){ tip.style.display='none'; });
+  });
+}
+
+/* ---------- weekly review ---------- */
+function weekKey(dateStr){
+  var d = new Date(dateStr+'T12:00:00');
+  var day = (d.getDay()+6)%7; /* Monday=0 */
+  d.setDate(d.getDate()-day);
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function renderReview(){
+  var box = document.getElementById('review-body');
+  if(state.entries.length===0){
+    box.innerHTML = '<div class="empty">The weekly review begins once there are dreams to review.</div>';
+    return;
+  }
+  var weeks = {};
+  state.entries.forEach(function(e){
+    var k = weekKey(e.date);
+    (weeks[k] = weeks[k]||[]).push(e);
+  });
+  var keys = Object.keys(weeks).sort().reverse();
+  box.innerHTML = keys.map(function(k){
+    var es = weeks[k].sort(function(a,b){return a.date<b.date?-1:1;});
+    var fc = {}, icc = {};
+    var dvals = [];
+    es.forEach(function(e){
+      (e.feelings||[]).forEach(function(f){fc[f]=(fc[f]||0)+1;});
+      (e.images||[]).forEach(function(t){icc[t]=(icc[t]||0)+1;});
+      if(e.distress!=null) dvals.push(e.distress);
+    });
+    var recF = Object.keys(fc).filter(function(f){return fc[f]>1;});
+    var recI = Object.keys(icc).filter(function(t){return icc[t]>1;});
+    var meta = es.length+' dream'+(es.length===1?'':'s');
+    if(recF.length) meta += ' &middot; recurring feelings: '+recF.map(esc).join(', ');
+    if(recI.length) meta += ' &middot; recurring images: '+recI.map(esc).join(', ');
+    if(dvals.length) meta += ' &middot; avg distress '+(dvals.reduce(function(a,b){return a+b;},0)/dvals.length).toFixed(1);
+    var items = es.map(function(e){
+      var feels = (e.feelings||[]).length ? ' <span class="ld">('+e.feelings.map(esc).join(', ')+')</span>' : '';
+      return '<li><span class="lt">'+esc(e.retitle||e.title||'untitled')+'</span> <span class="ld">'+fmtDate(e.date)+'</span>'+feels+'</li>';
+    }).join('');
+    var wkLabel = fmtDate(k);
+    return '<div class="week"><h3>Week of '+wkLabel+'</h3>'
+      + '<p class="wk-meta">'+meta+'</p><ul>'+items+'</ul>'
+      + '<label for="rv-'+k+'">Review note &middot; what do the titles say together? What was happening that week?</label>'
+      + '<textarea id="rv-'+k+'" onblur="saveReview(\''+k+'\', this.value)">'+esc(state.reviews[k]||'')+'</textarea>'
+      + '</div>';
+  }).join('');
+}
+function saveReview(k, v){
+  state.reviews[k] = v.trim();
+  if(!state.reviews[k]) delete state.reviews[k];
+  persist();
+}
+
+/* ---------- init ---------- */
+renderChips();
+document.getElementById('f-date').value = todayStr();
+</script>
+</body>
+</html>

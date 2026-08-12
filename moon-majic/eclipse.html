@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>An Eclipse Ritual</title>
+<style>
+  :root{
+    --bg:#0a0a12;
+    --bg2:#12121f;
+    --ink:#ece8f0;
+    --muted:#a7a1b8;
+    --gold:#e6c988;
+    --gold-dim:#b89a5e;
+    --line:#2a2740;
+    --accent:#c9a2d4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(230,201,136,0.10), transparent 60%),
+      radial-gradient(900px 500px at 80% 10%, rgba(201,162,212,0.08), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:44px 26px 90px;}
+  .crumb{font-size:0.9rem;letter-spacing:0.5px;color:var(--muted);margin-bottom:34px;}
+  .crumb a{color:var(--muted);border-bottom:1px dashed var(--line);}
+  .crumb a:hover{color:var(--gold);}
+
+  .eclipse{
+    width:96px;height:96px;margin:0 auto 26px;position:relative;
+    border-radius:50%;
+    background:radial-gradient(circle at 50% 50%, #0a0a12 52%, transparent 53%),
+               radial-gradient(circle at 50% 50%, rgba(230,201,136,0.9) 54%, rgba(230,201,136,0.15) 60%, transparent 72%);
+    box-shadow:0 0 60px 6px rgba(230,201,136,0.25);
+  }
+
+  h1{
+    font-size:2.5rem;font-weight:500;text-align:center;margin:0 0 6px;
+    letter-spacing:0.5px;
+  }
+  .sub{
+    text-align:center;color:var(--muted);font-style:italic;
+    margin:0 0 34px;font-size:1.02rem;
+  }
+
+  /* toggle */
+  .toggle{
+    display:flex;gap:6px;justify-content:center;
+    background:var(--bg2);border:1px solid var(--line);
+    border-radius:999px;padding:6px;max-width:340px;margin:0 auto 40px;
+  }
+  .toggle button{
+    flex:1;border:0;cursor:pointer;
+    background:transparent;color:var(--muted);
+    font-family:inherit;font-size:1rem;letter-spacing:0.3px;
+    padding:10px 14px;border-radius:999px;transition:all .25s ease;
+  }
+  .toggle button.active{
+    background:linear-gradient(180deg,rgba(230,201,136,0.22),rgba(230,201,136,0.10));
+    color:var(--gold);box-shadow:inset 0 0 0 1px rgba(230,201,136,0.35);
+  }
+
+  .jump{
+    display:inline-block;font-family:inherit;font-size:0.95rem;letter-spacing:0.5px;
+    color:var(--gold);border:1px solid rgba(230,201,136,0.35);border-radius:999px;
+    padding:8px 20px;transition:all .25s ease;
+  }
+  .jump:hover{background:rgba(230,201,136,0.12);border-color:var(--gold);}
+  .mode-note{
+    text-align:center;color:var(--accent);font-style:italic;
+    margin:-24px 0 34px;font-size:0.98rem;min-height:1.4em;
+  }
+
+  h2{
+    font-size:1.05rem;text-transform:uppercase;letter-spacing:2.5px;
+    color:var(--gold-dim);font-weight:600;margin:46px 0 4px;
+  }
+  h2 .rule{display:block;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);margin-top:10px;opacity:0.5;}
+
+  .step-num{
+    color:var(--gold);font-style:italic;font-size:1.15rem;
+    display:block;margin-bottom:-2px;
+  }
+  h3{font-size:1.5rem;font-weight:500;margin:30px 0 8px;}
+
+  p{margin:14px 0;}
+  .muted{color:var(--muted);}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(230,201,136,0.35);}
+  a:hover{border-bottom-color:var(--gold);}
+
+  .card{
+    background:var(--bg2);border:1px solid var(--line);
+    border-radius:14px;padding:20px 24px;margin:20px 0;
+  }
+  .gather{list-style:none;padding:0;margin:14px 0;}
+  .gather li{padding:7px 0 7px 26px;position:relative;border-bottom:1px dashed var(--line);}
+  .gather li:last-child{border-bottom:0;}
+  .gather li::before{content:"✦";position:absolute;left:0;color:var(--gold-dim);}
+
+  /* mode-specific blocks */
+  .only-solo,.only-paired{display:none;}
+  body[data-mode="solo"] .only-solo{display:block;}
+  body[data-mode="paired"] .only-paired{display:block;}
+  .modeflag{
+    display:inline-block;font-size:0.72rem;text-transform:uppercase;
+    letter-spacing:1.5px;padding:2px 9px;border-radius:999px;margin-bottom:6px;
+  }
+  .only-solo .modeflag{background:rgba(230,201,136,0.14);color:var(--gold);}
+  .only-paired .modeflag{background:rgba(201,162,212,0.16);color:var(--accent);}
+
+  .safety{
+    border-left:2px solid var(--gold-dim);padding:2px 0 2px 18px;
+    color:var(--muted);font-size:0.96rem;margin:18px 0;
+  }
+  .sources{font-size:0.9rem;color:var(--muted);}
+  .sources a{word-break:break-word;}
+  footer{margin-top:54px;text-align:center;color:var(--muted);font-size:0.85rem;}
+
+  @media print{
+    body{background:#fff;color:#111;}
+    .toggle,.mode-note{display:none;}
+    .only-solo,.only-paired{display:block !important;}
+    a{color:#111;}
+    .eclipse{box-shadow:none;}
+  }
+</style>
+</head>
+<body data-mode="paired">
+<div class="wrap">
+
+  <p class="crumb"><a href="../index.html">Witchy Things</a> / <a href="index.html">Moon Majic</a> / Eclipse</p>
+
+  <div class="eclipse" aria-hidden="true"></div>
+  <h1>An Eclipse Ritual</h1>
+  <p class="sub">For the total solar eclipse of August 12, 2026</p>
+
+  <div class="toggle" role="tablist" aria-label="Choose ritual version">
+    <button id="btn-solo" role="tab" onclick="setMode('solo')">Solo</button>
+    <button id="btn-paired" role="tab" class="active" onclick="setMode('paired')">With another</button>
+  </div>
+  <p class="mode-note" id="modeNote">You are viewing the version for two people.</p>
+
+  <p style="text-align:center;margin:-14px 0 30px;">
+    <a href="#gather" class="jump">Jump to ritual &#8595;</a>
+  </p>
+
+  <h2>Origins<span class="rule"></span></h2>
+  <p>Across very different cultures, an eclipse was rarely treated as neutral. It was read as an interruption, a moment when the ordinary order of sun and moon breaks and then repairs itself. What people did in that gap tended to fall into a few recurring shapes: they made deliberate sound to mark the passage, they went quiet and stayed inward, they made offerings, and in at least one tradition they used the darkness to settle what was unsettled between them.</p>
+  <p>A few specific practices this ritual borrows from, so you know what is inherited and what is invented. In several traditions people made sound at the turning point: in ancient China people banged drums to drive off the dragon swallowing the sun, the Maya banged pots and pans to make the sun and moon release their embrace, and Javanese communities beat drums and made offerings (<a href="https://www.exploratorium.edu/eclipse/eclipse-stories-from-around-the-world">Exploratorium</a>). The Navajo response was the opposite of noise, with elders having people stay inside and sit quietly and reverently, treating the eclipse as a solemn passage not to be stared at or disturbed (<a href="https://www.exploratorium.edu/eclipse/eclipse-stories-from-around-the-world">Exploratorium</a>). And among the Batammaliba of Togo and Benin, the eclipse was a time to resolve conflicts, so that the sun and moon, understood to be fighting, could be encouraged back into harmony (<a href="https://www.exploratorium.edu/eclipse/eclipse-stories-from-around-the-world">Exploratorium</a>). On the physical event itself, its path, timing, and safe viewing, see <a href="https://science.nasa.gov/eclipses/future-eclipses/total-solar-eclipse-on-august-12-2026/">NASA</a>, and for a wider survey of eclipse folklore see the <a href="https://www.almanac.com/solar-eclipse-folklore-myths-and-superstitions">Old Farmer's Almanac</a>.</p>
+  <p class="muted">The three-part shape below, release then stillness then return, is not itself an ancient rite. It is built to match the actual physical arc of an eclipse, the sky dimming, going darkest, then brightening, which many cultures read as a death and return of the sun. Treat it as a personal framework, not a claim about any one tradition. Only the practitioner decides what it means for them.</p>
+
+  <h2>What it is<span class="rule"></span></h2>
+  <div class="safety">
+    The eclipse is total only over Greenland, Iceland, northern Russia, the Atlantic, and Spain, with totality under about two and a half minutes. From the eastern US you will see at most a small partial, so this ritual does not depend on seeing the sky. If you do watch any partial phase, use ISO 12312-2 eclipse glasses, since ordinary sunglasses are not safe. Only totality itself is safe to view unaided, and the eastern US is not in the totality band. You can find your exact local partial times at timeanddate.com.
+  </div>
+  <div class="card" id="gather">
+    <p style="margin-top:0"><strong>Gather</strong></p>
+    <ul class="gather">
+      <li>One candle</li>
+      <li>Something to make a single clear sound: a bell, a bowl, a struck glass, or your own voice</li>
+      <li>A small cup of water</li>
+      <li>A slip of paper and a pen, if you like</li>
+    </ul>
+    <p class="muted only-solo" style="margin-bottom:0"><span class="modeflag">Solo</span><br>Do this outside if you can, or by a window. Turn off screens and notifications, and sit somewhere you will not be interrupted.</p>
+    <p class="muted only-paired" style="margin-bottom:0"><span class="modeflag">With another</span><br>Do this outside if you can, or by a window. Turn off screens and notifications, and sit facing each other with the candle between you.</p>
+  </div>
+
+  <h2>The ritual<span class="rule"></span></h2>
+
+  <h3><span class="step-num">One</span>Release</h3>
+  <p class="muted">Imagine or observe the light thinning.</p>
+  <p>Light the candle. Say aloud, in your own words, that you are marking the eclipse: a moment when things briefly come apart before they come back.</p>
+  <p>Name one thing you are ready to let go of. Not a resolution to fix it, just a naming of what you are done carrying.</p>
+  <div class="only-solo">
+    <p><span class="modeflag">Solo</span> Say it to the candle.</p>
+  </div>
+  <div class="only-paired">
+    <p><span class="modeflag">With another</span> Say it to each other, one at a time. The listener simply says "I heard that," nothing more. No advice, no reassurance.</p>
+  </div>
+  <p>Then make your one sound, the bell or bowl or your voice, to mark the release. This is the drum-beating gesture, scaled down: a single deliberate mark of the turning.</p>
+
+  <h3><span class="step-num">Two</span>Stillness</h3>
+  <p class="muted">Imagine or observe the darkness of the eclipse.</p>
+  <p>Blow out the candle, or if you are outside at the peak, let the natural dimming be the signal. Sit in the dark or the low light and be still for at least 2 minutes, roughly the length of totality itself.</p>
+  <div class="only-solo">
+    <p><span class="modeflag">Solo</span> No phone, no looking for meaning. If you want a focus, rest your attention on your breath or on the water in the cup. Sit with the discomfort and feel the gap rather than rush to fill it.</p>
+  </div>
+  <div class="only-paired">
+    <p><span class="modeflag">With another</span> No talking, no phones, no looking for meaning. You are simply sitting in the dark together. Sit with the discomfort and feel the gap rather than rush to fill it.</p>
+  </div>
+
+  <h3><span class="step-num">Three</span>Return</h3>
+  <p class="muted">Imagine or observe the light returning.</p>
+  <p>Relight the candle.</p>
+  <div class="only-solo">
+    <p><span class="modeflag">Solo</span> Name one thing you want to carry forward or begin. Write it on the slip of paper if you have one, and keep it. Drink some of the water. Say, in your own words, that the light is returning and so are you.</p>
+    <p>Close by naming, out loud, what you noticed without judging or interpreting.</p>
+  </div>
+  <div class="only-paired">
+    <p><span class="modeflag">With another</span> Before you name anything forward-looking, take a moment to clear anything unsettled between the two of you, even something small. Say it plainly and let it be answered. Keep this conversation short and relevant to what you are releasing.</p>
+    <p>Only then does each of you name one thing you want to carry forward, and you each drink from the water. The idea is that you use the eclipse's brief undoing to actually mend something, not just symbolize mending.</p>
+    <p>Close by each naming, out loud, what you noticed without judging or interpreting.</p>
+  </div>
+
+  <h2>Afterward<span class="rule"></span></h2>
+  <p>If a real shift showed up, or a felt "aha," it is worth writing down while it is fresh. If nothing profound happened, that is also honest and worth noting. An eclipse is a scheduled interruption; the ritual only borrows its timing. Whatever it opens is yours to read.</p>
+
+  <h2>Sources<span class="rule"></span></h2>
+  <p class="sources">
+    Exploratorium, "Eclipse Stories from Around the World": <a href="https://www.exploratorium.edu/eclipse/eclipse-stories-from-around-the-world">exploratorium.edu/eclipse/eclipse-stories-from-around-the-world</a><br>
+    NASA Science, "Total Solar Eclipse on August 12, 2026": <a href="https://science.nasa.gov/eclipses/future-eclipses/total-solar-eclipse-on-august-12-2026/">science.nasa.gov</a><br>
+    The Old Farmer's Almanac, "Solar Eclipse Folklore, Myths, and Superstitions": <a href="https://www.almanac.com/solar-eclipse-folklore-myths-and-superstitions">almanac.com</a>
+  </p>
+
+  <footer>Switch between the solo and paired versions with the toggle at the top. Print either version from your browser.<br><br><a href="index.html">Back to Moon Majic</a> &middot; <a href="../index.html">Witchy Things</a></footer>
+
+</div>
+
+<script>
+  function setMode(mode){
+    document.body.setAttribute('data-mode', mode);
+    document.getElementById('btn-solo').classList.toggle('active', mode==='solo');
+    document.getElementById('btn-paired').classList.toggle('active', mode==='paired');
+    document.getElementById('modeNote').textContent =
+      mode==='solo' ? 'You are viewing the version for one person.'
+                    : 'You are viewing the version for two people.';
+  }
+</script>
+</body>
+</html>

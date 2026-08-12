@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Moon Rituals, by Sign &middot; Moon Majic</title>
+<style>
+  :root{
+    --bg:#0a0a12;
+    --bg2:#12121f;
+    --ink:#ece8f0;
+    --muted:#a7a1b8;
+    --gold:#e6c988;
+    --gold-dim:#b89a5e;
+    --line:#2a2740;
+    --accent:#c9a2d4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(230,201,136,0.10), transparent 60%),
+      radial-gradient(900px 500px at 80% 10%, rgba(201,162,212,0.08), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:44px 26px 90px;}
+  .crumb{font-size:0.9rem;letter-spacing:0.5px;color:var(--muted);margin-bottom:34px;}
+  .crumb a{color:var(--muted);border-bottom:1px dashed var(--line);}
+  .crumb a:hover{color:var(--gold);}
+
+  .fullmoon{
+    width:84px;height:84px;margin:0 auto 24px;border-radius:50%;
+    background:radial-gradient(circle at 42% 38%, rgba(236,232,240,0.95), rgba(230,201,136,0.55) 70%, rgba(230,201,136,0.25) 90%);
+    box-shadow:0 0 60px 8px rgba(230,201,136,0.30);
+  }
+
+  h1{font-size:2.4rem;font-weight:500;text-align:center;margin:0 0 6px;letter-spacing:0.5px;}
+  .sub{text-align:center;color:var(--muted);font-style:italic;margin:0 0 36px;font-size:1.02rem;}
+
+  h2{
+    font-size:1.05rem;text-transform:uppercase;letter-spacing:2.5px;
+    color:var(--gold-dim);font-weight:600;margin:46px 0 4px;
+  }
+  h2 .rule{display:block;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);margin-top:10px;opacity:0.5;}
+  h3{font-size:1.5rem;font-weight:500;margin:38px 0 2px;}
+  .step-num{color:var(--gold);font-style:italic;font-size:1.15rem;display:block;margin-bottom:-2px;}
+
+  p{margin:14px 0;}
+  .muted{color:var(--muted);}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(230,201,136,0.35);}
+  a:hover{border-bottom-color:var(--gold);}
+
+  .card{
+    background:var(--bg2);border:1px solid var(--line);
+    border-radius:14px;padding:20px 24px;margin:20px 0;
+  }
+  .gather{list-style:none;padding:0;margin:14px 0;}
+  .gather li{padding:7px 0 7px 26px;position:relative;border-bottom:1px dashed var(--line);}
+  .gather li:last-child{border-bottom:0;}
+  .gather li::before{content:"\2726";position:absolute;left:0;color:var(--gold-dim);}
+
+  .signs-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:22px 0 10px;}
+  .signs-nav a{
+    font-size:0.92rem;letter-spacing:0.5px;color:var(--gold);
+    border:1px solid rgba(230,201,136,0.3);border-radius:999px;
+    padding:5px 14px;transition:all .25s ease;
+  }
+  .signs-nav a:hover{background:rgba(230,201,136,0.12);border-color:var(--gold);}
+
+  .sign{border-top:1px solid var(--line);padding-top:8px;margin-top:34px;}
+  .sign .tag{
+    font-size:0.78rem;text-transform:uppercase;letter-spacing:1.8px;color:var(--accent);
+    margin:2px 0 10px;
+  }
+  .sign .glyph{color:var(--gold-dim);font-size:1.3rem;margin-right:10px;}
+  .question{
+    border-left:2px solid var(--gold-dim);padding:2px 0 2px 18px;
+    color:var(--muted);font-style:italic;margin:16px 0 6px;
+  }
+  .top{display:block;text-align:right;font-size:0.85rem;margin-top:10px;border-bottom:0;}
+  .sources{font-size:0.9rem;color:var(--muted);}
+  .sources a{word-break:break-word;}
+  footer{margin-top:54px;text-align:center;color:var(--muted);font-size:0.85rem;}
+  @media print{
+    body{background:#fff;color:#111;}
+    a{color:#111;}
+    .signs-nav,.top{display:none;}
+    .fullmoon{box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+
+  <p class="crumb"><a href="../index.html">Witchy Things</a> / <a href="index.html">Moon Majic</a> / Full Moon</p>
+
+  <div class="fullmoon" aria-hidden="true"></div>
+  <h1>Full Moon Rituals, by Sign</h1>
+  <p class="sub">Culmination, gratitude, and release, under the most light you will get.</p>
+
+  <p>At the full moon the earth sits between the sun and the moon, so the moon's whole face is lit (<a href="https://science.nasa.gov/moon/moon-phases/">NASA</a>). Because sun and moon stand opposite each other, a full moon always falls in the sign opposite the sun's. The full moon in Aries arrives during Libra season, the full moon in Taurus during Scorpio season, and so on. Every full moon therefore lights up an axis, a tension between two signs, and each section below works that tension rather than pretending the moon's sign stands alone. Look up the sign of any full moon at <a href="https://www.almanac.com/moon-sign">Almanac.com</a> and exact times at <a href="https://www.timeanddate.com/moon/phases/">timeanddate.com</a>.</p>
+
+  <p class="muted">The pairing of the full moon with release and gratitude, as practiced here, is contemporary, carried by modern witchcraft and pagan communities (<a href="https://www.pagangrimoire.com/full-moon-rituals/">The Pagan Grimoire</a>). The sign meanings are traditional Western astrology, a symbolic system rather than an empirical claim. If you set an intention at the last new moon, bring that slip of paper; this ritual answers that one. Only you decide what any of it means.</p>
+
+  <h2>The base ritual<span class="rule"></span></h2>
+  <div class="card">
+    <p style="margin-top:0"><strong>Gather</strong></p>
+    <ul class="gather">
+      <li>One candle</li>
+      <li>Your intention slip from the last new moon, if you kept one</li>
+      <li>A second slip of paper and a pen</li>
+      <li>A bowl or cup of water</li>
+    </ul>
+    <p class="muted" style="margin-bottom:0">Do this within a day or two of the exact full moon, in moonlight if the sky allows, otherwise near a window. Screens off.</p>
+  </div>
+
+  <h3><span class="step-num">One</span>Notice</h3>
+  <p>Light the candle. If you have your new moon slip, read it aloud. Name what has come to fullness since, what grew, what surprised you, what plainly did not move. Say thank you for one specific thing, out loud, even if the month was hard. Gratitude here is an act of accuracy, not performance.</p>
+
+  <h3><span class="step-num">Two</span>Release</h3>
+  <p>On the second slip, write one thing you are ready to put down: a habit, a grievance, a story about yourself that has stopped being true. Read it aloud once. Then let the paper go, tear it and let the pieces fall into the water, or fold it away to discard in the morning. The gesture matters more than the method.</p>
+
+  <h3><span class="step-num">Three</span>Rest</h3>
+  <p>Sit in the moonlight, or the candlelight, for a few quiet minutes with nothing to do. The work of a full moon is mostly to witness. If you like, leave the bowl of water on a windowsill overnight, an old folk gesture of letting the moon touch what you will use tomorrow. Blow out the candle when you are done.</p>
+
+  <h2>By sign<span class="rule"></span></h2>
+  <div class="signs-nav">
+    <a href="#aries">Aries</a><a href="#taurus">Taurus</a><a href="#gemini">Gemini</a><a href="#cancer">Cancer</a><a href="#leo">Leo</a><a href="#virgo">Virgo</a><a href="#libra">Libra</a><a href="#scorpio">Scorpio</a><a href="#sagittarius">Sagittarius</a><a href="#capricorn">Capricorn</a><a href="#aquarius">Aquarius</a><a href="#pisces">Pisces</a>
+  </div>
+
+  <div class="sign" id="aries">
+    <h3><span class="glyph">&#9800;</span>Full Moon in Aries</h3>
+    <p class="tag">Fire &middot; the Aries&ndash;Libra axis &middot; falls in Libra season, usually late September to October</p>
+    <p>This moon stretches the line between self and partnership: what I want against what we agreed. It tends to surface anger that has been politely managed. Release the resentment you have been keeping civil, or the habit of abandoning your own position to keep the peace.</p>
+    <p>Variation: in the Release step, say the angry sentence plainly to the candle before you write its cooler version down. Anger named in ritual is less likely to leak sideways later.</p>
+    <p class="question">Where have I been so agreeable that I disappeared, and what do I actually want there?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="taurus">
+    <h3><span class="glyph">&#9801;</span>Full Moon in Taurus</h3>
+    <p class="tag">Earth &middot; the Taurus&ndash;Scorpio axis &middot; falls in Scorpio season, usually late October to November</p>
+    <p>This moon stretches the line between what steadies you and what entangles you: your own resources against shared ones, comfort against depth. Release a form of security that has become a cage, or a possession, commitment, or comfort you keep only out of habit.</p>
+    <p>Variation: hold something in your hands during the Notice step, a stone, a keepsake, bread, and name what real security feels like in the body before deciding what to put down.</p>
+    <p class="question">What am I holding onto because letting go would mean admitting something?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="gemini">
+    <h3><span class="glyph">&#9802;</span>Full Moon in Gemini</h3>
+    <p class="tag">Air &middot; the Gemini&ndash;Sagittarius axis &middot; falls in Sagittarius season, usually late November to December</p>
+    <p>This moon stretches the line between the details and the meaning: the facts you keep collecting against the belief that organizes them. Release a story you keep retelling that no longer serves, or the habit of gathering one more piece of information instead of deciding.</p>
+    <p>Variation: in the Notice step, tell the month as a story out loud in three sentences, no more. What survives the compression is what mattered.</p>
+    <p class="question">Which version of the story am I telling, and who does that version protect?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="cancer">
+    <h3><span class="glyph">&#9803;</span>Full Moon in Cancer</h3>
+    <p class="tag">Water &middot; the Cancer&ndash;Capricorn axis &middot; falls in Capricorn season, usually late December to January</p>
+    <p>This moon stretches the line between home and the climb: what tends you against what the world demands of you. It often arrives wet; let it. Release an obligation you took on to be good rather than because it was yours, or the belief that rest must be earned.</p>
+    <p>Variation: do the whole ritual somewhere soft, wrapped in something warm. In the Rest step, let the sitting be longer than feels productive.</p>
+    <p class="question">Who tends the one who tends everyone, and when did I last let that happen?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="leo">
+    <h3><span class="glyph">&#9804;</span>Full Moon in Leo</h3>
+    <p class="tag">Fire &middot; the Leo&ndash;Aquarius axis &middot; falls in Aquarius season, usually late January to February</p>
+    <p>This moon stretches the line between the heart and the crowd: your own shine against the group's expectations. Release the performance, the version of yourself curated for approval, or the fear that being fully seen will cost you your place among your people.</p>
+    <p>Variation: in the Notice step, name one moment this month you were proud of and tell it with full color, no downplaying. Let the gratitude land on yourself for once.</p>
+    <p class="question">What would I make, wear, or say if nobody's approval were at stake?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="virgo">
+    <h3><span class="glyph">&#9805;</span>Full Moon in Virgo</h3>
+    <p class="tag">Earth &middot; the Virgo&ndash;Pisces axis &middot; falls in Pisces season, usually late February to March</p>
+    <p>This moon stretches the line between the fixable and the unfixable: the list against the mystery. Release perfectionism in one named place, a project, a body, a household standard, or release the fantasy that enough optimizing will make you feel safe.</p>
+    <p>Variation: in the Release step, write the standard you are retiring as precisely as Virgo would want it written. Precision in the letting go is the sign's own medicine.</p>
+    <p class="question">What am I endlessly improving so that I never have to call it, or myself, enough?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="libra">
+    <h3><span class="glyph">&#9806;</span>Full Moon in Libra</h3>
+    <p class="tag">Air &middot; the Libra&ndash;Aries axis &middot; falls in Aries season, usually late March to April</p>
+    <p>This moon stretches the line between the relationship and the self, approached from the other side: what the bond needs against what you need. Release a lopsided arrangement, an old grievance in a partnership, or the habit of scoring fairness silently instead of negotiating it out loud.</p>
+    <p>Variation: if a specific relationship is at the center, write the release as one honest sentence you could actually say to them, then decide, deliberately, whether saying it is the next act.</p>
+    <p class="question">What agreement am I resenting that I never actually renegotiated?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="scorpio">
+    <h3><span class="glyph">&#9807;</span>Full Moon in Scorpio</h3>
+    <p class="tag">Water &middot; the Scorpio&ndash;Taurus axis &middot; falls in Taurus season, usually late April to May</p>
+    <p>This moon stretches the line between depth and ground: what churns underneath against the steady surface. It is traditionally one of the year's most intense moons. Release something you have carried in the dark, a grief, a jealousy, a secret's grip, at whatever depth you can do safely tonight.</p>
+    <p>Variation: let the water do the work; write the release and submerge the paper fully. If big feeling surfaces, ground afterward, feet on the floor, something to eat. Intensity is not an obligation.</p>
+    <p class="question">What have I buried that is still breathing, and what small piece of it can come up tonight?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="sagittarius">
+    <h3><span class="glyph">&#9808;</span>Full Moon in Sagittarius</h3>
+    <p class="tag">Fire &middot; the Sagittarius&ndash;Gemini axis &middot; falls in Gemini season, usually late May to June</p>
+    <p>This moon stretches the line between the belief and the evidence: the big meaning against the scattered facts of the month. Release a conviction that has hardened into dogma, a plan for the future that belongs to a former self, or the restlessness that treats every present as a layover.</p>
+    <p>Variation: do this one outside if at all possible, under open sky. In the Notice step, name one thing you learned this cycle that you did not expect to learn.</p>
+    <p class="question">Which of my certainties would benefit from one honest question?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="capricorn">
+    <h3><span class="glyph">&#9809;</span>Full Moon in Capricorn</h3>
+    <p class="tag">Earth &middot; the Capricorn&ndash;Cancer axis &middot; falls in Cancer season, usually late June to July</p>
+    <p>This moon stretches the line between the climb and the home you climb for. It tends to expose what the ambition is costing. Release a goal you have outgrown but keep serving, a standard of productivity borrowed from someone you do not even admire, or guilt about the season your career is actually in.</p>
+    <p>Variation: in the Notice step, name what the work gave you this cycle and what it took. Both lists out loud, same even tone.</p>
+    <p class="question">If the mountain had a summit, what did I tell myself would finally happen there?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="aquarius">
+    <h3><span class="glyph">&#9810;</span>Full Moon in Aquarius</h3>
+    <p class="tag">Air &middot; the Aquarius&ndash;Leo axis &middot; falls in Leo season, usually late July to August</p>
+    <p>This moon stretches the line between the group and the heart: the cause, the community, the feed, against the single life you are actually living. Release a belonging that costs your particularity, an ideal you perform but no longer feel, or the cool distance that keeps you safe from your own warmth.</p>
+    <p>Variation: in the Release step, name the group out loud, a workplace, a movement, a group chat, and then name what of yourself you want back from it.</p>
+    <p class="question">Where have I traded being known for being included?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <div class="sign" id="pisces">
+    <h3><span class="glyph">&#9811;</span>Full Moon in Pisces</h3>
+    <p class="tag">Water &middot; the Pisces&ndash;Virgo axis &middot; falls in Virgo season, usually late August to September</p>
+    <p>This moon stretches the line between the dream and the list: the oceanic against the orderly. It is the traditional moon of dissolving, of grief that finally moves, of art that arrives whole. Release the need to understand everything before feeling it, or a numbness you adopted to get through a demanding season.</p>
+    <p>Variation: skip the writing in the Release step if words will not come; hum, weep, or sit with your hands in the bowl of water instead. Record any dreams the next morning; this moon feeds the <a href="../dreamwork/index.html">Dreamwork portal</a> directly.</p>
+    <p class="question">What feeling has been waiting for me to stop being efficient?</p>
+    <a class="top" href="#top">&#8593; top</a>
+  </div>
+
+  <h2>Afterward<span class="rule"></span></h2>
+  <p>If something real shifted, write it down while it is fresh. If nothing profound happened, that is also honest and worth noting; a full moon is only a well-lit appointment with your own month. The waning weeks that follow favor finishing and clearing, and the next <a href="new-moon.html">new moon</a> starts the cycle again.</p>
+
+  <h2>Sources<span class="rule"></span></h2>
+  <p class="sources">
+    NASA Science, "Moon Phases": <a href="https://science.nasa.gov/moon/moon-phases/">science.nasa.gov/moon/moon-phases</a><br>
+    Almanac.com, "What Sign Is the Moon in Today?": <a href="https://www.almanac.com/moon-sign">almanac.com/moon-sign</a><br>
+    timeanddate.com, "Moon Phases": <a href="https://www.timeanddate.com/moon/phases/">timeanddate.com/moon/phases</a><br>
+    The Pagan Grimoire, "How to Perform a Full Moon Ritual": <a href="https://www.pagangrimoire.com/full-moon-rituals/">pagangrimoire.com/full-moon-rituals</a><br>
+    We'Moon, "Full and New Moon Rituals": <a href="https://wemoon.ws/blogs/magical-arts/full-and-new-moon-rituals">wemoon.ws</a>
+  </p>
+
+  <footer><a href="index.html">Back to Moon Majic</a> &middot; <a href="../index.html">Witchy Things</a></footer>
+
+</div>
+</body>
+</html>
