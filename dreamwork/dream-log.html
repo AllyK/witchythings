@@ -57,6 +57,8 @@
     background:linear-gradient(180deg,rgba(230,201,136,0.22),rgba(230,201,136,0.10));
     color:var(--gold);box-shadow:inset 0 0 0 1px rgba(230,201,136,0.35);
   }
+  nav.tabs button:focus{outline:none;}
+  nav.tabs button:focus-visible{box-shadow:inset 0 0 0 1px rgba(201,162,212,0.55);}
 
   .view{display:none;}
   .view.active{display:block;}
@@ -206,11 +208,12 @@
     <p class="sub">Feeling first, then story. Everything stays on this device.</p>
   </header>
 
-  <nav class="tabs" role="tablist">
+  <nav class="tabs" role="tablist" style="max-width:640px">
     <button id="tab-capture" class="active" onclick="show('capture')">Capture</button>
     <button id="tab-journal" onclick="show('journal')">Journal</button>
     <button id="tab-dash" onclick="show('dash')">Dashboards</button>
     <button id="tab-review" onclick="show('review')">Weekly Review</button>
+    <button id="tab-guide" onclick="show('guide')">Guide</button>
   </nav>
 
   <!-- CAPTURE -->
@@ -221,7 +224,9 @@
       <label for="f-date">Date of the dream</label>
       <input type="date" id="f-date">
 
-      <label>The feeling I woke with <span class="why">&middot; start here</span></label>
+      <label for="f-feelings">The feeling I woke with, in my own words <span class="why">&middot; start here, before the story</span></label>
+      <input type="text" id="f-feelings" placeholder="anxious, tender, a dread with no name..." oninput="renderChips()">
+      <p class="muted" style="font-size:0.85rem;margin:8px 0 0">Your words are the ones that count. Separate more than one with commas; short words feed the dashboards best. If a word below fits, tap it to add it.</p>
       <div class="chips" id="feel-chips"></div>
 
       <label for="f-body">Where it sits in the body</label>
@@ -290,6 +295,34 @@
     <div id="review-body"></div>
   </section>
 
+  <!-- GUIDE -->
+  <section class="view" id="view-guide">
+
+    <h2>Getting the log onto your device<span class="rule"></span></h2>
+    <div class="card">
+      <p style="margin-top:0">This whole app is one file, and that is deliberate: your dreams should not live on someone else's server. To install it, download the file (from the <a href="index.html">Dreamwork page</a>, use the download card or right-click it and choose "Save link as") and keep it anywhere you like, your desktop, a documents folder, a USB stick. Opening the file in any modern browser, usually by double-clicking it, is the whole installation. No account, no internet connection needed after the download, nothing to sign up for.</p>
+      <p><strong>On a phone or tablet:</strong> the simplest path is to open this page in your browser and add it to your home screen (in Safari, the Share button then "Add to Home Screen"; in Chrome or similar, the browser menu then "Add to Home screen"). It will open like an app from then on. You can also save the file into your Files app and open it with your browser from there.</p>
+      <p class="muted" style="margin-bottom:0"><strong>One thing to understand before you begin:</strong> your entries are saved by the browser you use, on the device you use. The same file opened in a different browser, or on a different device, starts empty. So pick one place to keep your log, and if you want to move or copy it, use the export and import buttons described below.</p>
+    </div>
+
+    <h2>Using it<span class="rule"></span></h2>
+    <div class="card">
+      <p style="margin-top:0"><strong>Capture</strong> is the daily practice, ideally before you are fully awake. The first question is the feeling you woke with, in your own words, because the feeling is the most reliable thread out of a dream and often the only one left. Then where it sits in the body, then the story, in the present tense, as if it is still happening. Fragments count; a single feeling word is a real entry. The title should come from the gut, the first phrase that arrives. If the dream was anxious, tick the box and rate the distress from 0 to 10; those numbers feed the dashboard that shows whether things are easing over time.</p>
+      <p><strong>Journal</strong> holds everything you have caught. Click any entry to open it, search across titles, dreams, and images, or filter to anxious dreams only. When you return to a dream with the tools from the <a href="index.html">Dreamwork page</a>, use "Edit / work this dream" and give it a new title in the re-title field; the journal will show both, because the distance between the first title and the second is often where the insight lives.</p>
+      <p><strong>Dashboards</strong> show the patterns a single dream cannot: which feelings recur, whether distress is drifting down, and which images keep coming back. Recurring images across weeks matter more than any single dream. Use the range buttons to look at the last 30 days, 90 days, or everything.</p>
+      <p style="margin-bottom:0"><strong>Weekly Review</strong> gathers each week's titles, dates, and feelings in one place, and surfaces anything that recurred. Read the titles together without rereading the entries, note what was happening in your life that week, and keep a short review note. This is the layer where the log starts talking back.</p>
+    </div>
+
+    <h2>Your data, backups, and moving devices<span class="rule"></span></h2>
+    <div class="card">
+      <p style="margin-top:0">Nothing you write here is sent anywhere. Entries live in your browser's local storage on this device only. That privacy has one cost: if you clear the browser's site data or browsing history for this file, or use a private or incognito window, the log will be emptied or never saved at all.</p>
+      <p style="margin-bottom:0">So make backups a small habit. In the Journal tab, "Export backup" downloads a single JSON file of everything, entries and review notes both. Keep it wherever you keep things that matter. To move to a new device or browser, or to recover after clearing data, open the log there and use "Import" with your backup file; existing entries are kept and only new ones are added, so importing is always safe.</p>
+    </div>
+
+    <h2>The spirit of the thing<span class="rule"></span></h2>
+    <p class="muted">This log follows a feeling-first method built from published dreamwork sources, described in full on the <a href="index.html">Dreamwork page</a>. Two principles from Jeremy Taylor anchor it: only the dreamer can say what a dream means, and no dream has only one meaning. The log never interprets your dreams. It only helps you catch them and notice what repeats.</p>
+  </section>
+
   <footer>
     Part of <a href="index.html">Witchy Things &middot; Dreamwork</a>. Method after Hill, Taylor, Schiller, Mellick, and Schwartz.<br>
     Only the dreamer can say what a dream means.
@@ -304,7 +337,6 @@
 var KEY = 'witchy-dream-log-v1';
 var FEELINGS = ['anxious','afraid','sad','tender','angry','ashamed','confused','longing','numb','calm','curious','joyful'];
 var state = load();
-var selectedFeelings = [];
 var editingId = null;
 var anxOnly = false;
 var rangeDays = 0;
@@ -337,7 +369,7 @@ function fmtDate(iso){
 
 /* ---------- tabs ---------- */
 function show(v){
-  ['capture','journal','dash','review'].forEach(function(k){
+  ['capture','journal','dash','review','guide'].forEach(function(k){
     document.getElementById('view-'+k).classList.toggle('active', k===v);
     document.getElementById('tab-'+k).classList.toggle('active', k===v);
   });
@@ -347,35 +379,37 @@ function show(v){
 }
 
 /* ---------- capture ---------- */
+function feelingsFromField(){
+  return document.getElementById('f-feelings').value
+    .split(',').map(function(s){return s.trim().toLowerCase();}).filter(Boolean);
+}
+function setFeelingsField(list){
+  document.getElementById('f-feelings').value = list.join(', ');
+  renderChips();
+}
 function renderChips(){
   var box = document.getElementById('feel-chips');
+  var current = feelingsFromField();
   box.innerHTML = '';
-  var all = FEELINGS.slice();
-  selectedFeelings.forEach(function(f){ if(all.indexOf(f)===-1) all.push(f); });
-  all.forEach(function(f){
+  FEELINGS.forEach(function(f){
     var b = document.createElement('button');
-    b.type='button'; b.className = 'chip' + (selectedFeelings.indexOf(f)>=0 ? ' on' : '');
+    b.type='button'; b.className = 'chip' + (current.indexOf(f)>=0 ? ' on' : '');
     b.textContent = f;
     b.onclick = function(){
-      var i = selectedFeelings.indexOf(f);
-      if(i>=0) selectedFeelings.splice(i,1); else selectedFeelings.push(f);
-      renderChips();
+      var list = feelingsFromField();
+      var i = list.indexOf(f);
+      if(i>=0) list.splice(i,1); else list.push(f);
+      setFeelingsField(list);
     };
     box.appendChild(b);
   });
-  var add = document.createElement('button');
-  add.type='button'; add.className='chip add'; add.textContent='+ my own word';
-  add.onclick = function(){
-    var w = prompt('Name the feeling in your own word:');
-    if(w){ w = w.trim().toLowerCase(); if(w && selectedFeelings.indexOf(w)===-1) selectedFeelings.push(w); renderChips(); }
-  };
-  box.appendChild(add);
 }
 
 function saveEntry(){
   var title = document.getElementById('f-title').value.trim();
   var dream = document.getElementById('f-dream').value.trim();
-  if(selectedFeelings.length===0 && !dream && !title){
+  var feelings = feelingsFromField();
+  if(feelings.length===0 && !dream && !title){
     flash('Nothing to save yet. Even one feeling word is an entry.');
     return;
   }
@@ -383,7 +417,7 @@ function saveEntry(){
   var entry = {
     id: editingId || ('d'+Math.random().toString(36).slice(2,10)+Date.now().toString(36)),
     date: document.getElementById('f-date').value || todayStr(),
-    feelings: selectedFeelings.slice(),
+    feelings: feelings,
     body: document.getElementById('f-body').value.trim(),
     distress: anx ? Number(document.getElementById('f-distress').value) : null,
     title: title,
@@ -406,10 +440,9 @@ function saveEntry(){
   document.getElementById('save-btn').textContent='Save entry';
 }
 function clearForm(){
-  selectedFeelings = [];
-  renderChips();
   document.getElementById('f-date').value = todayStr();
-  ['f-body','f-title','f-dream','f-images','f-waking','f-retitle'].forEach(function(id){ document.getElementById(id).value=''; });
+  ['f-feelings','f-body','f-title','f-dream','f-images','f-waking','f-retitle'].forEach(function(id){ document.getElementById(id).value=''; });
+  renderChips();
   document.getElementById('f-anx').checked = false;
   document.getElementById('distress-wrap').style.display='none';
   document.getElementById('f-distress').value = 5;
@@ -471,7 +504,7 @@ function editEntry(id){
   var e = state.entries.find(function(x){return x.id===id;});
   if(!e) return;
   editingId = id;
-  selectedFeelings = (e.feelings||[]).slice();
+  document.getElementById('f-feelings').value = (e.feelings||[]).join(', ');
   renderChips();
   document.getElementById('f-date').value = e.date;
   document.getElementById('f-body').value = e.body||'';
