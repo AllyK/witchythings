@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balance Point: A Solo Fall Equinox Practice &middot; Wheel of the Year</title>
+<style>
+  :root{
+    --bg:#0a0a12;
+    --bg2:#12121f;
+    --ink:#ece8f0;
+    --muted:#a7a1b8;
+    --gold:#e6c988;
+    --gold-dim:#b89a5e;
+    --line:#2a2740;
+    --accent:#c9a2d4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(230,201,136,0.10), transparent 60%),
+      radial-gradient(900px 500px at 80% 10%, rgba(201,162,212,0.08), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:44px 26px 90px;}
+  .crumb{font-size:0.9rem;letter-spacing:0.5px;color:var(--muted);margin-bottom:34px;}
+  .crumb a{color:var(--muted);border-bottom:1px dashed var(--line);}
+  .crumb a:hover{color:var(--gold);}
+
+  .balance{
+    width:84px;height:84px;margin:0 auto 24px;border-radius:50%;
+    background:linear-gradient(90deg, rgba(236,232,240,0.92) 0%, rgba(230,201,136,0.75) 49.5%, #1b1a2e 50.5%, #12121f 100%);
+    border:1px solid rgba(230,201,136,0.45);
+    box-shadow:0 0 60px 6px rgba(230,201,136,0.20);
+  }
+
+  h1{font-size:2.4rem;font-weight:500;text-align:center;margin:0 0 6px;letter-spacing:0.5px;}
+  .sub{text-align:center;color:var(--muted);font-style:italic;margin:0 0 36px;font-size:1.02rem;}
+
+  h2{
+    font-size:1.05rem;text-transform:uppercase;letter-spacing:2.5px;
+    color:var(--gold-dim);font-weight:600;margin:46px 0 4px;
+  }
+  h2 .rule{display:block;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);margin-top:10px;opacity:0.5;}
+  h3{font-size:1.5rem;font-weight:500;margin:38px 0 2px;}
+  .step-num{color:var(--gold);font-style:italic;font-size:1.15rem;display:block;margin-bottom:-2px;}
+
+  p{margin:14px 0;}
+  .muted{color:var(--muted);}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(230,201,136,0.35);}
+  a:hover{border-bottom-color:var(--gold);}
+
+  .card{
+    background:var(--bg2);border:1px solid var(--line);
+    border-radius:14px;padding:20px 24px;margin:20px 0;
+  }
+  .card.timing{border-color:rgba(201,162,212,0.35);}
+  .card .label{
+    font-size:0.78rem;text-transform:uppercase;letter-spacing:1.8px;color:var(--accent);margin:0 0 6px;
+  }
+  .gather{list-style:none;padding:0;margin:14px 0;}
+  .gather li{padding:7px 0 7px 26px;position:relative;border-bottom:1px dashed var(--line);}
+  .gather li:last-child{border-bottom:0;}
+  .gather li::before{content:"\2726";position:absolute;left:0;color:var(--gold-dim);}
+
+  .jump{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:22px 0 10px;}
+  .jump a{
+    font-size:0.92rem;letter-spacing:0.5px;color:var(--gold);
+    border:1px solid rgba(230,201,136,0.3);border-radius:999px;
+    padding:5px 14px;transition:all .25s ease;
+  }
+  .jump a:hover{background:rgba(230,201,136,0.12);border-color:var(--gold);}
+
+  .uses{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0;}
+  .uses .card{margin:0;padding:16px 18px;}
+  .uses h4{margin:0 0 4px;font-weight:500;font-size:1.12rem;color:var(--gold);}
+  .uses p{margin:4px 0 0;font-size:0.96rem;color:var(--muted);}
+  @media (max-width:560px){ .uses{grid-template-columns:1fr;} }
+
+  .question{
+    border-left:2px solid var(--gold-dim);padding:2px 0 2px 18px;
+    color:var(--muted);font-style:italic;margin:16px 0 6px;
+  }
+  .why{
+    font-size:0.93rem;color:var(--muted);
+    border-top:1px dashed var(--line);margin-top:14px;padding-top:10px;
+  }
+  .why strong{color:var(--accent);font-weight:500;letter-spacing:0.3px;}
+  .say{
+    text-align:center;font-style:italic;color:var(--gold);font-size:1.12rem;margin:18px 0;
+  }
+  ol.prompts{padding-left:22px;}
+  ol.prompts li{margin:8px 0;}
+  .sources{font-size:0.9rem;color:var(--muted);}
+  .sources a{word-break:break-word;}
+  .sources p{margin:8px 0;}
+  .top{display:block;text-align:right;font-size:0.85rem;margin-top:10px;border-bottom:0;}
+  footer{margin-top:54px;text-align:center;color:var(--muted);font-size:0.85rem;}
+  @media print{
+    body{background:#fff;color:#111;}
+    a{color:#111;}
+    .jump,.top{display:none;}
+    .balance{box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+
+  <p class="crumb"><a href="../index.html">Witchy Things</a> / <a href="index.html">Wheel of the Year</a> / Fall Equinox</p>
+
+  <div class="balance" aria-hidden="true"></div>
+  <h1>Balance Point</h1>
+  <p class="sub">A solo fall equinox practice for gathering energy, directing it, and opening to change.</p>
+
+  <p>Most of the year runs on momentum. We rarely stop at the exact middle of anything to ask what we are carrying, what it cost, and what we would be willing to let change. The September equinox offers that middle point in plain astronomical terms: it is the moment the sun crosses the celestial equator, when it rises due east and sets due west for everyone on Earth, and day and night are close to (though not exactly) equal (<a href="https://earthsky.org/astronomy-essentials/everything-you-need-to-know-september-equinox/">Byrd, EarthSky</a>). In the Northern Hemisphere, from here on the nights grow longer than the days until the spring equinox.</p>
+
+  <p>This page is one practice built around that hinge. It is designed for one person, about forty five minutes, and a small table.</p>
+
+  <div class="card timing">
+    <p class="label">When</p>
+    <p style="margin-top:0">The September equinox falls between about September 21 and 24 each year. In 2026 it arrives at 00:05 UTC on September 23, which is 8:05 PM Eastern on Tuesday, September 22 (<a href="https://earthsky.org/astronomy-essentials/everything-you-need-to-know-september-equinox/">EarthSky</a>). Anywhere within a day on either side works. For other years, check <a href="https://www.timeanddate.com/calendar/september-equinox.html">timeanddate.com</a>.</p>
+    <p class="muted" style="margin-bottom:0">The ideal window is sunset, facing west, when you can literally watch the sun go down on the line that the equinox makes. Sunrise facing east is the other good choice. In 2026 the moon is waxing toward the Harvest Moon, the full moon nearest the equinox (<a href="https://www.almanac.com/content/full-moon-september">Almanac.com</a>), which is full on September 26 (<a href="https://catalina.lpl.arizona.edu/moon-phases/month/2026-09">Catalina Sky Survey</a>). Because a full moon sits opposite the sun, and the sun has just entered Libra, that full moon falls in Aries.</p>
+  </div>
+
+  <div class="jump">
+    <a href="#inherited">Where this comes from</a><a href="#uses">What it is good for</a><a href="#ritual">The practice</a><a href="#prompts">Prompts</a><a href="#sources">Sources</a>
+  </div>
+
+  <h2 id="inherited">Where this comes from<span class="rule"></span></h2>
+
+  <p><strong>Inherited, and older than it looks.</strong> People in agricultural societies have marked the gathering of the harvest for as long as there are records, and the autumn observances that survive in the historical record are tied to bringing in the physical harvest rather than to the astronomical moment itself (<a href="https://fabulousfolklore.substack.com/p/the-folklore-of-the-autumn-equinox">Sedgwick, Fabulous Folklore</a>). Before it had a newer name, modern pagans often called this festival simply the autumn equinox or Harvest Home (<a href="https://religionnews.com/2022/09/22/as-pagans-celebrate-autumn-equinox-some-question-why-mabon-is-its-symbolic-deity/">Greene</a>). Libra, the sign of the scales, is conventionally dated from about September 22 (<a href="https://www.britannica.com/place/Libra-constellation">Britannica</a>), because the tropical zodiac used in Western astrology is anchored to the equinoxes. The image of Persephone descending into the underworld as the growing season ends comes from the Homeric Hymn to Demeter, and the Greater Mysteries at Eleusis were held around this time of year, though they did not mark the equinox itself (<a href="https://fabulousfolklore.substack.com/p/the-folklore-of-the-autumn-equinox">Sedgwick</a>).</p>
+
+  <p id="stone"><strong>In stone.</strong> Long before anyone wrote about festivals, people built the sun's path into their monuments. At the Neolithic temple of Mnajdra in Malta, the equinox sunrise shines straight through the main doorway, and a survey of the eastern skyline found possible postholes that may have marked solstice sunrises as well (<a href="https://journal.equinoxpub.com/JSA/article/view/10738">Ventura and Agius, 2017</a>). At Cairn T, a roughly 5,000 year old passage tomb at Loughcrew in Ireland, the rising sun around both equinoxes enters the passage and moves across a carved backstone; the local researcher Tim O'Brien argues the chamber was built to do exactly that (<a href="https://www.knowth.com/loughcrew-equinox.htm">Knowth.com, citing O'Brien</a>). Thousands of people gather at Angkor Wat each year to watch the equinox sunrise over its towers (<a href="https://journal.equinoxpub.com/JSA/article/view/10647">Romain, 2018</a>), and at Chich&eacute;n Itz&aacute; a serpent of shadow appears on the pyramid's stairway around the equinoxes. In Mesopotamia the evidence is written rather than built: Babylonian astronomical texts such as MUL.APIN defined the equinoxes as the days when day and night are equal (<a href="https://link.springer.com/chapter/10.1007/978-3-030-64606-6_3">Steele, 2021</a>).</p>
+
+  <p>Specialists are careful with these sites, and the reasons are worth knowing. "Equinox" can mean several different days: the day when day and night are equal, the day the sun rises due east, or the day halfway in time between the solstices. These do not always fall together, and near the equinox the sunrise point barely moves for several days, so an east facing building catches equinox light fairly easily whether or not anyone planned it (<a href="https://journal.equinoxpub.com/JSA/article/view/10743">Ruggles, 1997</a>; <a href="https://link.springer.com/chapter/10.1007/978-3-030-64606-6_2">Belmonte, 2021</a>). In Mesoamerica, Ivan &Scaron;prajc argues that many alignments long read as equinoctial more likely mark "quarter days," the midpoints in time between the solstices, which fall a couple of days off the astronomical equinox (<a href="https://www.cambridge.org/core/journals/ancient-mesoamerica/article/equinoctial-sun-and-astronomical-alignments-in-mesoamerican-architecture-fiction-and-fact/4DFE69BA5460E3984774283E601066D5">&Scaron;prajc</a>). Whether any single alignment was intended is still debated, and none of them tells us the equinox was celebrated as a festival.</p>
+
+  <p>But a mismatch in definitions is not a contradiction. Our modern equinox, a precise instant when the sun crosses the celestial equator, is one way of naming a turning point that people have noticed for thousands of years in their own terms: a sunrise on a particular stone, a day that feels as long as its night, the halfway mark between the longest and shortest days. The builders at Mnajdra and Loughcrew may not have meant what an astronomer means today, and they did not need to. We have always watched the sun. Standing at a window at sunset on the equinox puts you in a very long line of people doing the same.</p>
+
+  <p><strong>Inherited, and newer than it looks.</strong> The historian Ronald Hutton found no reliable evidence of ancient festivals at either equinox in Britain; they are the two newest spokes on the modern Wheel of the Year (<a href="https://global.oup.com/academic/product/the-stations-of-the-sun-9780198205708">Hutton, <em>The Stations of the Sun</em></a>, as summarized by <a href="https://fabulousfolklore.substack.com/p/the-folklore-of-the-autumn-equinox">Sedgwick</a>). The name Mabon was attached to this equinox in 1974 by the American witch Aidan Kelly, who found the phrase "autumn equinox" too mundane and borrowed a figure from the Welsh story of Mabon ap Modron (<a href="https://religionnews.com/2022/09/22/as-pagans-celebrate-autumn-equinox-some-question-why-mabon-is-its-symbolic-deity/">Greene, Religion News Service</a>). The contemporary themes of balance, gratitude, and releasing what no longer serves before the dark half of the year are carried by present day pagan practice (<a href="https://www.pagangrimoire.com/what-is-mabon-how-to-celebrate/">Elding, The Pagan Grimoire</a>). None of that makes them less useful. It only means they are ours to shape.</p>
+
+  <p><strong>Invented here.</strong> The five steps below, the balance ledger, the directional sequence, and the "open door" step were written for this portal. Grounding and centering is a staple of modern witchcraft practice going back at least to Starhawk's <em>The Spiral Dance</em> (1979); the version here is a simplified one.</p>
+
+  <p class="muted">A note on evidence, since this practice leans on psychology alongside tradition. Research on ritual suggests it can help regulate emotion, focus attention before something demanding, and strengthen a sense of connection (<a href="https://journals.sagepub.com/doi/abs/10.1177/1088868317734944">Hobson, Schroeder, Risen, Xygalatas and Inzlicht, 2018</a>). One widely shared 2016 study claiming that rituals improve performance by reducing anxiety was <a href="https://www.sciencedirect.com/science/article/pii/S0749597824000694">retracted in 2024</a>, so the claims on this page stay modest. The practice does not need a study to be worth doing. It just should not pretend to be medicine. Only the practitioner decides what it means.</p>
+
+  <h2 id="uses">What the equinox is good for<span class="rule"></span></h2>
+
+  <div class="uses">
+    <div class="card">
+      <h4>Taking stock</h4>
+      <p>A true midpoint invites an honest ledger: what grew this year, and what it cost. The scales are Libra's symbol for a reason.</p>
+    </div>
+    <div class="card">
+      <h4>Gratitude with teeth</h4>
+      <p>Harvest is the oldest layer. Specific, written gratitude has modest but real evidence behind it (<a href="https://pubmed.ncbi.nlm.nih.gov/12585811/">Emmons and McCullough, 2003</a>).</p>
+    </div>
+    <div class="card">
+      <h4>Release, not destruction</h4>
+      <p>Persephone goes underground, she does not die. What you put down now can rest rather than be killed off.</p>
+    </div>
+    <div class="card">
+      <h4>A threshold for change</h4>
+      <p>People are more likely to start aspirational changes after "temporal landmarks" that feel like a new chapter (<a href="https://pubsonline.informs.org/doi/10.1287/mnsc.2014.1901">Dai, Milkman and Riis, 2014</a>). A season turning can be one.</p>
+    </div>
+    <div class="card">
+      <h4>Channelling energy</h4>
+      <p>The sun sits exactly on the east to west line. That makes this a natural day to practice gathering energy and sending it somewhere on purpose.</p>
+    </div>
+    <div class="card">
+      <h4>Preparing for the dark half</h4>
+      <p>Longer nights mean more rest, more interior work, and often more vivid dreams. Set up the habits now that the dark season will need.</p>
+    </div>
+  </div>
+
+  <h2 id="ritual">The practice<span class="rule"></span></h2>
+
+  <div class="card">
+    <p style="margin-top:0"><strong>Gather</strong></p>
+    <ul class="gather">
+      <li>Two candles, one light colored and one dark (gold and deep purple, cream and brown, whatever you have). One for the light half of the year, one for the dark.</li>
+      <li>Something harvested: an apple is ideal, or a pear, squash, a handful of seeds or grain</li>
+      <li>A small knife and a plate, if you are using an apple</li>
+      <li>Three slips of paper and a pen</li>
+      <li>A cup of water, cider, or tea</li>
+      <li>A potted plant, a patch of earth, or a small dish of soil</li>
+      <li>A way to find west (a phone compass works; the setting sun works better)</li>
+    </ul>
+    <p class="muted" style="margin-bottom:0">Traditional color and plant correspondences for this sabbat include gold, orange, brown, and maroon, with apples, rosemary, cinnamon, and maple (<a href="https://www.pagangrimoire.com/what-is-mabon-how-to-celebrate/">The Pagan Grimoire</a>). Use them if they help you drop into the work. Skip them if they become a shopping list.</p>
+  </div>
+
+  <h3><span class="step-num">One</span>Find the line</h3>
+  <p>Set the light candle on your left and the dark candle on your right, with the harvest between them. Stand or sit facing west (east if you are doing this at sunrise). Notice that, on the equinox, the sun sets due west for everyone on Earth. You are standing on the same line as everyone else tonight.</p>
+  <p>Ground. Let your breath slow to something like five or six breaths a minute: in for about five counts, out for about five. Picture roots from the base of your spine or the soles of your feet going down into the earth, and on each inhale draw something steady up through them. On each exhale let the day drain down and away. Stay here until your body feels heavier and your mind a little quieter, usually two to five minutes.</p>
+  <p class="why"><strong>Why this works on both levels:</strong> in energy terms, you cannot direct what you have not first gathered, and grounding is how most traditions begin. In physiological terms, slow paced breathing around six breaths a minute is associated with increased parasympathetic activity and calmer emotional states (<a href="https://www.frontiersin.org/articles/10.3389/fnhum.2018.00353/full">Zaccaro and colleagues, 2018</a>).</p>
+
+  <h3><span class="step-num">Two</span>Weigh the harvest</h3>
+  <p>Light the light candle. On the first slip of paper, draw a line down the middle. On the left, write what this year has grown in you since the spring: what you built, learned, survived, or finally said. On the right, write what it cost: the energy, the relationships stretched thin, the rest you did not take. Try to make the two sides honest rather than even.</p>
+  <p>Then say three specific thank yous out loud. Specific means a person, a moment, a thing that happened, not "my health" or "my friends" in the abstract. Gratitude here is an act of accuracy.</p>
+  <p class="question">Looking at both columns, where is my life out of balance, and is that imbalance a choice I would make again?</p>
+  <p class="why"><strong>On the evidence:</strong> in the best known gratitude study, people who kept weekly gratitude lists rated their lives more positively than comparison groups (<a href="https://pubmed.ncbi.nlm.nih.gov/12585811/">Emmons and McCullough, 2003</a>). A later meta analysis found gratitude practices have only small effects on anxiety and depression (<a href="https://link.springer.com/article/10.1007/s10902-020-00236-6">Cregg and Cheavens, 2021</a>). Treat it as a way of seeing clearly, not a cure.</p>
+
+  <h3><span class="step-num">Three</span>Send it underground</h3>
+  <p>Light the dark candle from the light one. This is the turn: the year tipping toward night.</p>
+  <p>On the second slip, write what you are ready to stop carrying into the dark half of the year. It might be a commitment, a grudge, a way of over functioning, or a story about yourself that stopped being true. Read it aloud once. Then fold it small and bury it in the soil of your plant or your patch of earth. It is not being destroyed. It is going under to rest, the way Persephone does, and whatever it becomes by spring will be different from what it is now.</p>
+  <p class="question">What am I keeping out of habit, loyalty, or fear of the empty space it would leave?</p>
+  <p class="why"><strong>On the evidence:</strong> writing about emotionally significant experiences has been studied since the 1980s and can support wellbeing for some people (<a href="https://journals.sagepub.com/doi/10.1111/j.1467-9280.1997.tb00403.x">Pennebaker, 1997</a>), though across studies the average effect is small (<a href="https://psycnet.apa.org/doi/10.1037/0033-2909.132.6.823">Frattaroli, 2006</a>). If the release brings up more than a slip of paper can hold, that is information worth bringing to someone you trust.</p>
+
+  <h3><span class="step-num">Four</span>Open the door</h3>
+  <p>This is the step for change. Sit with both candles lit and your hands resting open on your knees, palms up. Say, out loud and without finishing the sentence:</p>
+  <p class="say">"I do not yet know what comes next, and I am willing to find out."</p>
+  <p>Stay with the discomfort of that for a minute. Change rarely goes straight from an ending to a new beginning; there is almost always a middle stretch where the old way is gone and the new one has not arrived, a "neutral zone" in William Bridges' phrase (<em>Transitions</em>, 1980), or a liminal, "betwixt and between" state in the anthropologist Victor Turner's (1967). The equinox is a picture of that middle: equal light, equal dark, neither one winning yet.</p>
+  <p>On the third slip, write one change you are willing to let arrive this season. Phrase it as an invitation, not a goal ("I am open to more quiet evenings," "I am open to being surprised by work," "I am open to a friendship changing shape"). Underneath, write one small, concrete action you will take in the next seven days that makes room for it.</p>
+  <p class="question">What would I have to stop controlling for this change to have space to happen?</p>
+  <p class="why"><strong>Why the concrete action:</strong> the fresh start research found people are more likely to start aspirational behaviors like exercise after landmarks that feel like a new chapter (<a href="https://pubsonline.informs.org/doi/10.1287/mnsc.2014.1901">Dai, Milkman and Riis, 2014</a>). The landmarks studied were calendar ones, such as a new week, month, or year, birthdays, and holidays, so whether a solstice or equinox works the same way is untested. A small action taken soon is how you find out for yourself.</p>
+
+  <h3><span class="step-num">Five</span>Channel and seal</h3>
+  <p>Pick up the apple (or whatever you harvested). Hold it at your heart with both hands and breathe the way you did in step one, drawing up from the roots on each inhale. On the exhale, send what you have gathered through your arms and into the fruit, with the third slip in mind: this is energy for the change you are opening to. Do this for nine breaths, or until it feels finished.</p>
+  <p>If it is an apple, cut it crosswise through the middle. The seed chambers form a five pointed star. That is simple botany, and many modern witches read it as a pentacle, a small reminder that the pattern was inside all along. Eat half slowly, taking in what you charged. Leave the other half outside, or pour a little of your drink onto the earth, as thanks.</p>
+  <p>Fold the third slip and keep it somewhere you will see it: your altar, your wallet, your bathroom mirror. Blow out the dark candle first, then the light one, and say something simple to close, like:</p>
+  <p class="say">"Balanced for a moment. Open to what turns."</p>
+  <a class="top" href="#top">&#8593; top</a>
+
+  <h2 id="prompts">Journal prompts for the equinox week<span class="rule"></span></h2>
+  <p>If one evening is not enough, spread these across the days between the equinox and the Harvest Moon.</p>
+  <ol class="prompts">
+    <li>What did I plant this spring, literally or otherwise, and what actually came up?</li>
+    <li>Where is my energy leaking, and where is it being well spent?</li>
+    <li>Who helped my harvest this year, and have I told them?</li>
+    <li>What part of me does better in the dark half of the year, and what does it need from me?</li>
+    <li>What change am I resisting because I cannot yet see the other side of it?</li>
+    <li>If the scales tipped too far one way this year, which way, and what is one small counterweight?</li>
+  </ol>
+
+  <h2>Afterward<span class="rule"></span></h2>
+  <p>If something real shifted, write it down while it is fresh. If nothing profound happened, that is also honest and worth noting. The equinox is only a well placed appointment with your own year.</p>
+  <p>Longer nights are good for dreamwork. If dreams come in the nights after the ritual, capture them in the <a href="../dreamwork/dream-log.html">dream log</a>, feeling first. And the <a href="../moon-majic/full-moon.html#aries">full moon in Aries</a> that follows the equinox works the Aries and Libra axis, which picks up right where this practice leaves off: what you want for yourself, weighed against what you owe to others.</p>
+
+  <h2 id="sources">Sources<span class="rule"></span></h2>
+  <div class="sources">
+    <p><strong>Astronomy and timing</strong><br>
+    Byrd, Deborah. "Everything you need to know: September equinox." EarthSky: <a href="https://earthsky.org/astronomy-essentials/everything-you-need-to-know-september-equinox/">earthsky.org</a><br>
+    timeanddate.com, "September Equinox": <a href="https://www.timeanddate.com/calendar/september-equinox.html">timeanddate.com/calendar/september-equinox.html</a><br>
+    Catalina Sky Survey, University of Arizona, "Moon Phases, September 2026": <a href="https://catalina.lpl.arizona.edu/moon-phases/month/2026-09">catalina.lpl.arizona.edu</a><br>
+    Almanac.com, "Full Moon for September": <a href="https://www.almanac.com/content/full-moon-september">almanac.com</a></p>
+
+    <p><strong>History and tradition</strong><br>
+    Greene, Heather. "As pagans celebrate autumn equinox, some question why Mabon is its symbolic deity." Religion News Service, September 22, 2022: <a href="https://religionnews.com/2022/09/22/as-pagans-celebrate-autumn-equinox-some-question-why-mabon-is-its-symbolic-deity/">religionnews.com</a><br>
+    Hutton, Ronald. <em>The Stations of the Sun: A History of the Ritual Year in Britain.</em> Oxford University Press, 1996: <a href="https://global.oup.com/academic/product/the-stations-of-the-sun-9780198205708">global.oup.com</a><br>
+    Sedgwick, Icy. "The Folklore of the Autumn Equinox: Marking the Sun's Path." Fabulous Folklore: <a href="https://fabulousfolklore.substack.com/p/the-folklore-of-the-autumn-equinox">fabulousfolklore.substack.com</a><br>
+    Elding, Ash. "Mabon: Meaning, Rituals, and Symbols of the Fall Equinox." The Pagan Grimoire: <a href="https://www.pagangrimoire.com/what-is-mabon-how-to-celebrate/">pagangrimoire.com</a><br>
+    Britannica, "Libra": <a href="https://www.britannica.com/place/Libra-constellation">britannica.com</a><br>
+    Starhawk. <em>The Spiral Dance: A Rebirth of the Ancient Religion of the Great Goddess.</em> Harper and Row, 1979.</p>
+
+    <p><strong>Archaeoastronomy</strong><br>
+    Ventura, F. J., and Agius, G. (2017). An investigation of the possible equinox alignment at Mnajdra, Malta. <em>Journal of Skyscape Archaeology</em>: <a href="https://journal.equinoxpub.com/JSA/article/view/10738">journal.equinoxpub.com</a><br>
+    Knowth.com, "Loughcrew Equinox Sunrise Illumination at Cairn T," citing O'Brien, T., <em>Light Years Ago</em>: <a href="https://www.knowth.com/loughcrew-equinox.htm">knowth.com</a><br>
+    Romain, W. F. (2018). Solstice alignments at Angkor Wat and nearby temples: Connecting to the cycles of time. <em>Journal of Skyscape Archaeology, 4</em>(2), 176 to 200: <a href="https://journal.equinoxpub.com/JSA/article/view/10647">journal.equinoxpub.com</a><br>
+    Steele, J. (2021). Their equinox: Mesopotamian conceptions of solstices and equinoxes. In E. Boutsikas, S. C. McCluskey, and J. Steele (Eds.), <em>Advancing Cultural Astronomy</em>. Springer: <a href="https://link.springer.com/chapter/10.1007/978-3-030-64606-6_3">link.springer.com</a><br>
+    Ruggles, C. (1997). Whose equinox? <em>Archaeoastronomy</em> (supplement to the <em>Journal for the History of Astronomy</em>), reprinted in the <em>Journal of Skyscape Archaeology</em>: <a href="https://journal.equinoxpub.com/JSA/article/view/10743">journal.equinoxpub.com</a><br>
+    Belmonte, J. A. (2021). What equinox? In E. Boutsikas, S. C. McCluskey, and J. Steele (Eds.), <em>Advancing Cultural Astronomy</em>. Springer: <a href="https://link.springer.com/chapter/10.1007/978-3-030-64606-6_2">link.springer.com</a><br>
+    &Scaron;prajc, I. Equinoctial sun and astronomical alignments in Mesoamerican architecture: Fiction and fact. <em>Ancient Mesoamerica</em>: <a href="https://www.cambridge.org/core/journals/ancient-mesoamerica/article/equinoctial-sun-and-astronomical-alignments-in-mesoamerican-architecture-fiction-and-fact/4DFE69BA5460E3984774283E601066D5">cambridge.org</a></p>
+
+    <p><strong>Psychology</strong><br>
+    Hobson, N. M., Schroeder, J., Risen, J. L., Xygalatas, D., and Inzlicht, M. (2018). The psychology of rituals: An integrative review and process based framework. <em>Personality and Social Psychology Review, 22</em>(3), 260 to 284: <a href="https://journals.sagepub.com/doi/abs/10.1177/1088868317734944">journals.sagepub.com</a><br>
+    Retraction notice for Brooks, A. W., et al. (2016), "Don't stop believing: Rituals improve performance by decreasing anxiety." <em>Organizational Behavior and Human Decision Processes</em>, 2024: <a href="https://www.sciencedirect.com/science/article/pii/S0749597824000694">sciencedirect.com</a><br>
+    Emmons, R. A., and McCullough, M. E. (2003). Counting blessings versus burdens. <em>Journal of Personality and Social Psychology, 84</em>(2), 377 to 389: <a href="https://pubmed.ncbi.nlm.nih.gov/12585811/">pubmed.ncbi.nlm.nih.gov/12585811</a><br>
+    Cregg, D. R., and Cheavens, J. S. (2021). Gratitude interventions: Effective self help? A meta analysis of the impact on symptoms of depression and anxiety. <em>Journal of Happiness Studies, 22</em>, 413 to 445: <a href="https://link.springer.com/article/10.1007/s10902-020-00236-6">link.springer.com</a><br>
+    Pennebaker, J. W. (1997). Writing about emotional experiences as a therapeutic process. <em>Psychological Science, 8</em>(3), 162 to 166: <a href="https://journals.sagepub.com/doi/10.1111/j.1467-9280.1997.tb00403.x">journals.sagepub.com</a><br>
+    Frattaroli, J. (2006). Experimental disclosure and its moderators: A meta analysis. <em>Psychological Bulletin, 132</em>(6), 823 to 865: <a href="https://psycnet.apa.org/doi/10.1037/0033-2909.132.6.823">psycnet.apa.org</a><br>
+    Zaccaro, A., Piarulli, A., Laurino, M., Garbella, E., Menicucci, D., Neri, B., and Gemignani, A. (2018). How breath control can change your life: A systematic review on psycho physiological correlates of slow breathing. <em>Frontiers in Human Neuroscience, 12</em>, 353: <a href="https://www.frontiersin.org/articles/10.3389/fnhum.2018.00353/full">frontiersin.org</a><br>
+    Dai, H., Milkman, K. L., and Riis, J. (2014). The fresh start effect: Temporal landmarks motivate aspirational behavior. <em>Management Science, 60</em>(10), 2563 to 2582: <a href="https://pubsonline.informs.org/doi/10.1287/mnsc.2014.1901">pubsonline.informs.org</a><br>
+    Bridges, William. <em>Transitions: Making Sense of Life's Changes.</em> Addison Wesley, 1980.<br>
+    Turner, Victor. "Betwixt and Between: The Liminal Period in Rites de Passage." In <em>The Forest of Symbols</em>. Cornell University Press, 1967.</p>
+  </div>
+
+  <footer><a href="index.html">Back to Wheel of the Year</a> &middot; <a href="../index.html">Witchy Things</a></footer>
+
+</div>
+</body>
+</html>

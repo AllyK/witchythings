@@ -6,9 +6,12 @@ file with inline CSS/JS.
 
 ## Structure
 
-- `index.html` — the main portal page (links out to the two sections).
+- `index.html` — the main portal page (links out to the three sections).
 - `moon-majic/` — the Moon Majic portal: `index.html` plus `eclipse.html`, `new-moon.html`,
   `full-moon.html` (rituals keyed to the sign the moon is in).
+- `wheel-of-the-year/` — `index.html` plus `fall-equinox.html` ("Balance Point", a solo September
+  equinox practice with inherited/invented notes and a psychology evidence layer). Add future
+  sabbats here as their own pages.
 - `dreamwork/` — `index.html` (the dreamwork method) and `dream-log.html`, an offline dream
   tracker that saves entries to the reader's own browser localStorage; nothing is sent anywhere.
   It includes dashboards (feelings over time, distress trends, recurring images), a weekly review,

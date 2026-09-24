@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Witchy Things</title>
+<title>Wheel of the Year &middot; Witchy Things</title>
 <style>
   :root{
     --bg:#0a0a12;
@@ -28,11 +28,16 @@
     line-height:1.7;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:720px;margin:0 auto;padding:54px 26px 90px;}
+  .wrap{max-width:720px;margin:0 auto;padding:44px 26px 90px;}
+  .crumb{font-size:0.9rem;letter-spacing:0.5px;color:var(--muted);margin-bottom:34px;}
+  .crumb a{color:var(--muted);border-bottom:1px dashed var(--line);}
+  .crumb a:hover{color:var(--gold);}
+  .soon{border:1px dashed var(--line);border-radius:14px;padding:18px 24px;margin:22px 0;color:var(--muted);font-size:0.95rem;}
+  .sources{font-size:0.9rem;color:var(--muted);}
 
   .moon{
     width:96px;height:96px;margin:0 auto 26px;position:relative;
-    border-radius:50%;
+    border-radius:50%;border:1px solid rgba(230,201,136,0.35);
     background:radial-gradient(circle at 62% 40%, rgba(236,232,240,0.95) 0%, rgba(230,201,136,0.55) 45%, rgba(18,18,31,0.9) 72%),
                radial-gradient(circle at 50% 50%, rgba(230,201,136,0.5) 54%, rgba(230,201,136,0.12) 62%, transparent 74%);
     box-shadow:0 0 60px 6px rgba(230,201,136,0.22);
@@ -90,36 +95,26 @@
 <body>
 <div class="wrap">
 
-  <div class="moon" aria-hidden="true"></div>
-  <h1>Witchy Things</h1>
-  <p class="sub">Rituals, moon work, the turning year, and dreamwork. A small portal of practices, kept honestly.</p>
+  <p class="crumb"><a href="../index.html">Witchy Things</a> / Wheel of the Year</p>
 
-  <p>Everything here follows the same two commitments. First, each practice says plainly where it comes from: what is inherited from a named tradition or source, and what is invented as a personal framework. Second, only the practitioner decides what any of it means. Nothing on these pages is a verdict.</p>
+  <div class="moon" aria-hidden="true" style="background:conic-gradient(from 0deg, rgba(230,201,136,0.8), rgba(201,162,212,0.35), #12121f, rgba(201,162,212,0.35), rgba(230,201,136,0.8));"></div>
+  <h1>Wheel of the Year</h1>
+  <p class="sub">Solo practices for the turning points of the sun.</p>
 
-  <h2>The portals<span class="rule"></span></h2>
+  <p>The moon gives a monthly rhythm; the sun gives a yearly one. The modern pagan Wheel of the Year marks eight points on that circle: the two solstices, the two equinoxes, and the four "cross quarter" days between them. Some of those days have long histories in the British and Irish calendar. Others, including both equinoxes, have little evidence of ancient celebration, and the eight part wheel as a whole was assembled within modern witchcraft in the twentieth century (<a href="https://global.oup.com/academic/product/the-stations-of-the-sun-9780198205708">Hutton, <em>The Stations of the Sun</em></a>). Each practice here says which parts are inherited and which are invented. Only the practitioner decides what any of it means.</p>
 
-  <a class="portal" href="moon-majic/index.html">
-    <span class="glyph">&#9789;</span>
-    <h3>Moon Majic</h3>
-    <p>Working with the lunar cycle: an eclipse ritual for scheduled interruptions, new moon intentions and full moon releases, each keyed to the sign the moon is in.</p>
-    <p class="paths">Eclipse ritual &middot; New moon by sign &middot; Full moon by sign</p>
+  <h2>The practices<span class="rule"></span></h2>
+
+  <a class="portal" href="fall-equinox.html">
+    <span class="glyph">&#9878;</span>
+    <h3>Fall Equinox: Balance Point</h3>
+    <p>A solo practice for the September equinox: grounding on the east to west line, weighing the year's harvest, sending what is finished underground, opening to change, and channelling gathered energy toward it.</p>
+    <p class="paths">About September 21 to 24 &middot; sunset facing west &middot; about 45 minutes</p>
   </a>
 
-  <a class="portal" href="dreamwork/index.html">
-    <span class="glyph">&#10022;</span>
-    <h3>Dreamwork</h3>
-    <p>A feeling-first method for capturing and working dreams, built from six named sources, with a downloadable dream log that keeps everything on your own device.</p>
-    <p class="paths">The method &middot; Going deeper tools &middot; Offline dream log with dashboards</p>
-  </a>
+  <div class="soon">More turning points to come. The winter solstice is next on the wheel, around December 21.</div>
 
-  <a class="portal" href="wheel-of-the-year/index.html">
-    <span class="glyph">&#9788;</span>
-    <h3>Wheel of the Year</h3>
-    <p>Solo practices for the sun's turning points, starting with the fall equinox: balance, harvest, release, and opening to change.</p>
-    <p class="paths">Fall equinox &middot; more sabbats to come</p>
-  </a>
-
-  <footer>Witchy Things &middot; a personal collection, shared freely. Take what serves you and leave the rest.</footer>
+  <footer><a href="../index.html">Back to Witchy Things</a></footer>
 
 </div>
 </body>
