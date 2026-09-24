@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a12">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Dream Log">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
 <title>Dream Log</title>
 <style>
   :root{
@@ -301,7 +308,7 @@
     <h2>Getting the log onto your device<span class="rule"></span></h2>
     <div class="card">
       <p style="margin-top:0">This whole app is one file, and that is deliberate: your dreams should not live on someone else's server. To install it, download the file (from the <a href="index.html">Dreamwork page</a>, use the download card or right-click it and choose "Save link as") and keep it anywhere you like, your desktop, a documents folder, a USB stick. Opening the file in any modern browser, usually by double-clicking it, is the whole installation. No account, no internet connection needed after the download, nothing to sign up for.</p>
-      <p><strong>On a phone or tablet:</strong> the simplest path is to open this page in your browser and add it to your home screen (in Safari, the Share button then "Add to Home Screen"; in Chrome or similar, the browser menu then "Add to Home screen"). It will open like an app from then on. You can also save the file into your Files app and open it with your browser from there.</p>
+      <p><strong>On an iPhone or iPad:</strong> open this log at its web address, allyk.github.io/witchythings/dreamwork/dream-log.html, in Safari. Tap the Share button, then "Add to Home Screen." From then on it opens from its own icon like an app, works with no signal once it has loaded the first time, and keeps your entries between visits. Adding it to the Home Screen this way is what makes it dependable on iOS; opening a downloaded copy from the Files app will not save your entries reliably. On Android, open the same address in Chrome and choose "Install app" or "Add to Home screen" from the menu.</p>
       <p class="muted" style="margin-bottom:0"><strong>One thing to understand before you begin:</strong> your entries are saved by the browser you use, on the device you use. The same file opened in a different browser, or on a different device, starts empty. So pick one place to keep your log, and if you want to move or copy it, use the export and import buttons described below.</p>
     </div>
 
@@ -743,6 +750,15 @@ function saveReview(k, v){
 /* ---------- init ---------- */
 renderChips();
 document.getElementById('f-date').value = todayStr();
+</script>
+<script>
+/* Register the offline service worker so the log works with no signal
+   and behaves like an app when added to the Home Screen. */
+if('serviceWorker' in navigator){
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').catch(function(){});
+  });
+}
 </script>
 </body>
 </html>
