@@ -8,7 +8,8 @@ file with inline CSS/JS.
 
 - `index.html` — the main portal page (links out to the three sections).
 - `moon-majic/` — the Moon Majic portal: `index.html` plus `eclipse.html`, `new-moon.html`,
-  `full-moon.html` (rituals keyed to the sign the moon is in).
+  `full-moon.html` (rituals keyed to the sign the moon is in), and `harvest-moon.html` (a reaping
+  ritual for the full moon nearest the autumn equinox, with an optional Star card variation).
 - `wheel-of-the-year/` — `index.html` plus `fall-equinox.html` ("Balance Point", a solo September
   equinox practice with inherited/invented notes and a psychology evidence layer). Add future
   sabbats here as their own pages.

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Harvest Moon: A Reaping Ritual &middot; Moon Majic</title>
+<style>
+  :root{
+    --bg:#0a0a12;
+    --bg2:#12121f;
+    --ink:#ece8f0;
+    --muted:#a7a1b8;
+    --gold:#e6c988;
+    --gold-dim:#b89a5e;
+    --line:#2a2740;
+    --accent:#c9a2d4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(230,201,136,0.10), transparent 60%),
+      radial-gradient(900px 500px at 80% 10%, rgba(201,162,212,0.08), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:44px 26px 90px;}
+  .crumb{font-size:0.9rem;letter-spacing:0.5px;color:var(--muted);margin-bottom:34px;}
+  .crumb a{color:var(--muted);border-bottom:1px dashed var(--line);}
+  .crumb a:hover{color:var(--gold);}
+
+  .harvest{
+    width:84px;height:84px;margin:0 auto 24px;border-radius:50%;
+    background:radial-gradient(circle at 42% 38%, #f6dca6, #e0a45a 62%, #b8742e 92%);
+    box-shadow:0 0 60px 10px rgba(224,164,90,0.32);
+  }
+
+  h1{font-size:2.4rem;font-weight:500;text-align:center;margin:0 0 6px;letter-spacing:0.5px;}
+  .sub{text-align:center;color:var(--muted);font-style:italic;margin:0 0 36px;font-size:1.02rem;}
+
+  h2{
+    font-size:1.05rem;text-transform:uppercase;letter-spacing:2.5px;
+    color:var(--gold-dim);font-weight:600;margin:46px 0 4px;
+  }
+  h2 .rule{display:block;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);margin-top:10px;opacity:0.5;}
+  h3{font-size:1.5rem;font-weight:500;margin:38px 0 2px;}
+  .step-num{color:var(--gold);font-style:italic;font-size:1.15rem;display:block;margin-bottom:-2px;}
+
+  p{margin:14px 0;}
+  .muted{color:var(--muted);}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(230,201,136,0.35);}
+  a:hover{border-bottom-color:var(--gold);}
+
+  .card{
+    background:var(--bg2);border:1px solid var(--line);
+    border-radius:14px;padding:20px 24px;margin:20px 0;
+  }
+  .card.timing{border-color:rgba(201,162,212,0.35);}
+  .card .label{
+    font-size:0.78rem;text-transform:uppercase;letter-spacing:1.8px;color:var(--accent);margin:0 0 6px;
+  }
+  .gather{list-style:none;padding:0;margin:14px 0;}
+  .gather li{padding:7px 0 7px 26px;position:relative;border-bottom:1px dashed var(--line);}
+  .gather li:last-child{border-bottom:0;}
+  .gather li::before{content:"\2726";position:absolute;left:0;color:var(--gold-dim);}
+
+  .jump{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:22px 0 10px;}
+  .jump a{
+    font-size:0.92rem;letter-spacing:0.5px;color:var(--gold);
+    border:1px solid rgba(230,201,136,0.3);border-radius:999px;
+    padding:5px 14px;transition:all .25s ease;
+  }
+  .jump a:hover{background:rgba(230,201,136,0.12);border-color:var(--gold);}
+
+  .uses{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0;}
+  .uses .card{margin:0;padding:16px 18px;}
+  .uses h4{margin:0 0 4px;font-weight:500;font-size:1.12rem;color:var(--gold);}
+  .uses p{margin:4px 0 0;font-size:0.96rem;color:var(--muted);}
+  @media (max-width:560px){ .uses{grid-template-columns:1fr;} }
+
+  .question{
+    border-left:2px solid var(--gold-dim);padding:2px 0 2px 18px;
+    color:var(--muted);font-style:italic;margin:16px 0 6px;
+  }
+  .why{
+    font-size:0.93rem;color:var(--muted);
+    border-top:1px dashed var(--line);margin-top:14px;padding-top:10px;
+  }
+  .why strong{color:var(--accent);font-weight:500;letter-spacing:0.3px;}
+  .say{
+    text-align:center;font-style:italic;color:var(--gold);font-size:1.12rem;margin:18px 0;
+  }
+  ol.prompts{padding-left:22px;}
+  ol.prompts li{margin:8px 0;}
+  .sources{font-size:0.9rem;color:var(--muted);}
+  .sources a{word-break:break-word;}
+  .sources p{margin:8px 0;}
+  .top{display:block;text-align:right;font-size:0.85rem;margin-top:10px;border-bottom:0;}
+  footer{margin-top:54px;text-align:center;color:var(--muted);font-size:0.85rem;}
+  @media print{
+    body{background:#fff;color:#111;}
+    a{color:#111;}
+    .jump,.top{display:none;}
+    .harvest{box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+
+  <p class="crumb"><a href="../index.html">Witchy Things</a> / <a href="index.html">Moon Majic</a> / Harvest Moon</p>
+
+  <div class="harvest" aria-hidden="true"></div>
+  <h1>The Harvest Moon</h1>
+  <p class="sub">A reaping ritual: honor how far you have come, gather what you grew, and keep one seed for what begins next.</p>
+
+  <p>Most of us are better at planting than at reaping. We set intentions, start projects, and push through hard seasons, and then move straight on to the next thing without stopping to take in what actually grew. The Harvest Moon is a traditional pause for exactly that. It is the full moon nearest the autumn equinox, and for farmers it once meant extra working light at the busiest time of year: around this full moon, the moon rises only about 25 to 30 minutes later each night across most of the United States instead of the usual 50 or so, because its path meets the eastern horizon at a shallow angle in early autumn. That gives several evenings in a row of bright moonlight right after sunset (<a href="https://www.almanac.com/what-harvest-moon">Schaaf, Almanac.com</a>).</p>
+
+  <p>This page is one ritual for that pause, built for one person, about forty five minutes, and an evening at a window facing east.</p>
+
+  <div class="card timing">
+    <p class="label">When</p>
+    <p style="margin-top:0">The Harvest Moon usually falls in September and occasionally in early October (<a href="https://www.almanac.com/what-harvest-moon">Almanac.com</a>). In 2026 it is exactly full at 12:49 PM Eastern on Saturday, September 26, which is daytime in the Americas, so the evenings of September 26 and 27 are the ones to watch. That night the moon rises in the east around sunset, with Saturn appearing as a bright, star-like point to its lower left about an hour after moonrise (<a href="https://www.space.com/stargazing/september-full-moon-2026-when-where-and-how-to-see-the-harvest-moon">Wood, Space.com</a>). Check your local moonrise time at <a href="https://www.timeanddate.com/moon/phases/">timeanddate.com</a>.</p>
+    <p class="muted" style="margin-bottom:0">Because a full moon always sits opposite the sun, and the sun has just entered Libra, the Harvest Moon usually falls in Aries or Pisces. In 2026 it is in Aries, the first sign of the zodiac, which puts a note of new beginnings inside a harvest moon. See the <a href="full-moon.html#aries">Aries section</a> of the full moon page for more on that axis.</p>
+  </div>
+
+  <div class="jump">
+    <a href="#inherited">Where this comes from</a><a href="#ritual">The ritual</a><a href="#star">With the Star</a><a href="#prompts">Prompts</a><a href="#sources">Sources</a>
+  </div>
+
+  <h2 id="inherited">Where this comes from<span class="rule"></span></h2>
+
+  <p><strong>Inherited.</strong> The name Harvest Moon comes from its practical use: the extra evening light helped farmers and crews bring in summer crops (<a href="https://www.almanac.com/what-harvest-moon">Schaaf, Almanac.com</a>). The same full moon also anchors harvest festivals well beyond Europe. In 2026 the Mid-Autumn Festival, held on the fifteenth day of the eighth month of the Chinese lunar calendar, fell on September 25 (<a href="https://www.chinahighlights.com/festivals/mid-autumn-festival-date.htm">China Highlights</a>), and Sukkot, the Jewish harvest festival of booths, began at sundown the same day (<a href="https://www.hebcal.com/holidays/sukkot-2026">Hebcal</a>). People have been gathering under this particular moon to give thanks for a long time.</p>
+
+  <p><strong>Also inherited, but from the sky rather than the fields.</strong> The Harvest Moon often looks huge and orange as it rises. The color is real: near the horizon, moonlight passes through more atmosphere, which scatters the bluer light and leaves the warmer colors. The size is not. The moon is the same width on the horizon as overhead, and scientists still do not have a fully settled explanation for why it looks bigger (<a href="https://science.nasa.gov/solar-system/moon/the-moon-illusion-why-does-the-moon-look-so-big-sometimes/">Dyches, NASA</a>). Enjoy it anyway.</p>
+
+  <p><strong>Invented here.</strong> The ritual steps below, including the timeline, the reaping out loud, the compost step, and keeping a seed, were written for this portal. The pairing of full moons with gratitude and release is a contemporary practice (<a href="https://www.pagangrimoire.com/full-moon-rituals/">The Pagan Grimoire</a>), and the base <a href="full-moon.html">full moon ritual</a> on this site follows it. This page shifts the weight toward harvest: less letting go, more taking in. Only the practitioner decides what it means.</p>
+
+  <h2 id="ritual">The ritual<span class="rule"></span></h2>
+
+  <div class="card">
+    <p style="margin-top:0"><strong>Gather</strong></p>
+    <ul class="gather">
+      <li>One candle, gold or orange if you have one</li>
+      <li>Something harvested to eat: an apple, bread, squash, grapes, whatever the season gives you</li>
+      <li>An object or photo from an earlier version of you, from one to several years ago</li>
+      <li>A few index cards or slips of paper and a pen</li>
+      <li>Two cups or small pitchers of water, and a houseplant or a patch of earth</li>
+      <li>A single seed you can keep: an apple seed (perhaps from the <a href="../wheel-of-the-year/fall-equinox.html">equinox practice</a>), a bean, a pumpkin seed</li>
+    </ul>
+    <p class="muted" style="margin-bottom:0">Do this on the night of the full moon or the night after, starting at moonrise if you can. Screens off.</p>
+  </div>
+
+  <h3><span class="step-num">One</span>Watch it rise</h3>
+  <p>Face east as the moon comes up. Do nothing else for a few minutes. Watch the color change as it climbs out of the thick air near the horizon. This is the part of the Harvest Moon that is its own: the light arriving early, when there is still work to finish. Light the candle when the moon clears the rooftops or trees.</p>
+
+  <h3><span class="step-num">Two</span>Walk the long rows</h3>
+  <p>Hold the object from your earlier self. Remember who that person was: what they worried about, what they could not yet do, what they did not yet know they would survive. On one card, write a short timeline in three lines:</p>
+  <p class="say">Where I was. What I planted. What came up.</p>
+  <p>"What I planted" means the choices, efforts, risks, and hard conversations, including the ones that felt like nothing at the time. "What came up" means what is true now because of them. Be concrete: a skill, a boundary, a relationship, a way you now respond to things that used to knock you flat.</p>
+  <p class="why"><strong>An honest note on looking back:</strong> psychologists have found that people tend to judge their more distant past selves harshly and feel they have improved, partly because running down a past self flatters the present one (<a href="https://psycnet.apa.org/doi/10.1037/0022-3514.80.4.572">Wilson and Ross, 2001</a>; <a href="https://journals.sagepub.com/doi/10.1111/1467-8721.01228">Ross and Wilson, 2003</a>). So write evidence, not only feeling, and give the earlier you credit too. They did the planting.</p>
+
+  <h3><span class="step-num">Three</span>Reap out loud</h3>
+  <p>On separate cards, write each thing you harvested this year, one per card. Then read them aloud, one at a time, and after each one say: <em>"I grew this."</em> It will probably feel awkward. Say it anyway. Most of us have practiced crediting luck, timing, and other people until we no longer notice our own hands in the work.</p>
+  <p>Then name, out loud, the people and conditions that helped: the teacher, the friend who showed up, the rest you finally took. A harvest is never gathered alone, and saying both at once is the point: <em>I did this, and I was helped.</em></p>
+  <p>Eat some of your harvested food slowly, as the taking in.</p>
+  <p class="question">Which of these would the person in that old photo not have believed?</p>
+
+  <h3><span class="step-num">Four</span>Compost what did not grow</h3>
+  <p>Some things you planted did not come up. Write one of them on a card. Instead of mourning it or blaming yourself, ask what it taught you, and write that underneath. Then tear the card and tuck the pieces into the soil of your plant, or put them in the compost. Failed crops still feed the ground for the next season.</p>
+
+  <h3><span class="step-num">Five</span>Keep one seed</h3>
+  <p>The Harvest Moon closes a season, but in 2026 it rises in Aries, the sign of beginnings, and every harvest holds the seed of the next planting. Hold your seed in your palm under the moonlight. Ask what this harvest has made possible that was not possible before, and name one new beginning it opens. Write it on the back of your timeline card.</p>
+  <p>Keep the seed with the card somewhere you will see it through the winter: on your altar, in a small dish, in a jar by the window. It is a promise, not a project plan. You do not have to plant it until spring.</p>
+  <p class="question">What am I now strong enough, or free enough, to begin?</p>
+
+  <h3><span class="step-num">Six</span>Pour it back</h3>
+  <p>Take the two cups of water. Pour one onto the earth of your plant, giving back to what grew you. Pour the other slowly into a basin, sink, or bath, returning water to water. Blow out the candle and, if you can, sit in the moonlight for a while with nothing to do. Say something simple to close:</p>
+  <p class="say">"What I sowed, I reap. What I reap, I carry forward."</p>
+  <a class="top" href="#top">&#8593; top</a>
+
+  <h2 id="star">If you pulled the Star<span class="rule"></span></h2>
+  <p>The final step borrows its gesture from tarot's Star card (XVII). In the Rider Waite Smith deck, a woman kneels with one foot on land and one in water, pouring from two jugs onto both, under a great eight pointed star. A. E. Waite gave the card the mottoes "waters of life freely" and "gifts of the Spirit," and read it as hope and truth unveiled (<a href="https://sacred-texts.com/tarot/pkt/pktar17.htm">Waite, <em>The Pictorial Key to the Tarot</em>, 1910</a>). Rachel Pollack reads the Star, which follows the Tower in the major arcana, as the calm and renewed hope that come after upheaval (<em>Seventy-Eight Degrees of Wisdom</em>, 1980).</p>
+  <p>If the Star comes up for you around a Harvest Moon, it is a natural companion to reaping. It suggests a harvest that is not only what you produced but what you recovered: a steadiness or a hope that came back after something fell apart. When you pour the water in step six, try pouring both cups at once, as the figure on the card does, and let that be your answer to what this season restored.</p>
+  <p class="question">What has come back to me since the last thing that fell apart?</p>
+
+  <h2 id="prompts">Journal prompts for the waning week<span class="rule"></span></h2>
+  <ol class="prompts">
+    <li>What did I plant a year ago that I had forgotten about until it came up?</li>
+    <li>What do I now do easily that used to cost me enormous effort?</li>
+    <li>Whose hands are in my harvest, and have I told them?</li>
+    <li>What am I reluctant to take credit for, and why?</li>
+    <li>What did the failed crops teach me that the successful ones could not?</li>
+    <li>What is the seed I am carrying into winter, and what will it need from me?</li>
+  </ol>
+
+  <h2>Afterward<span class="rule"></span></h2>
+  <p>If something real shifted, write it down while it is fresh. If the ritual felt flat, that is honest too; a harvest moon is only a well lit appointment with your own year. Dreams in the nights after a full moon can be worth catching in the <a href="../dreamwork/dream-log.html">dream log</a>. The waning weeks that follow favor finishing and storing, and the next <a href="new-moon.html">new moon</a> is a good time to look at your seed again.</p>
+
+  <h2 id="sources">Sources<span class="rule"></span></h2>
+  <div class="sources">
+    <p><strong>Astronomy and timing</strong><br>
+    Schaaf, Fred. "What Is the Harvest Moon?" The Old Farmer's Almanac: <a href="https://www.almanac.com/what-harvest-moon">almanac.com</a><br>
+    Wood, Anthony. "September full moon 2026: When, where and how to see the Harvest Moon." Space.com, August 31, 2026: <a href="https://www.space.com/stargazing/september-full-moon-2026-when-where-and-how-to-see-the-harvest-moon">space.com</a><br>
+    Dyches, Preston. "The Moon Illusion: Why Does the Moon Look So Big Sometimes?" NASA Science: <a href="https://science.nasa.gov/solar-system/moon/the-moon-illusion-why-does-the-moon-look-so-big-sometimes/">science.nasa.gov</a><br>
+    timeanddate.com, "Moon Phases": <a href="https://www.timeanddate.com/moon/phases/">timeanddate.com/moon/phases</a></p>
+
+    <p><strong>Harvest festivals</strong><br>
+    China Highlights, "Mid-Autumn Festival 2026": <a href="https://www.chinahighlights.com/festivals/mid-autumn-festival-date.htm">chinahighlights.com</a><br>
+    Hebcal, "Sukkot 2026": <a href="https://www.hebcal.com/holidays/sukkot-2026">hebcal.com</a><br>
+    The Pagan Grimoire, "How to Perform a Full Moon Ritual": <a href="https://www.pagangrimoire.com/full-moon-rituals/">pagangrimoire.com</a></p>
+
+    <p><strong>Tarot</strong><br>
+    Waite, A. E. <em>The Pictorial Key to the Tarot.</em> 1910. "The Star": <a href="https://sacred-texts.com/tarot/pkt/pktar17.htm">sacred-texts.com</a><br>
+    Pollack, Rachel. <em>Seventy-Eight Degrees of Wisdom: A Book of Tarot.</em> 1980.</p>
+
+    <p><strong>Psychology</strong><br>
+    Wilson, A. E., and Ross, M. (2001). From chump to champ: People's appraisals of their earlier and present selves. <em>Journal of Personality and Social Psychology, 80</em>(4), 572 to 584: <a href="https://psycnet.apa.org/doi/10.1037/0022-3514.80.4.572">psycnet.apa.org</a><br>
+    Ross, M., and Wilson, A. E. (2003). Autobiographical memory and conceptions of self: Getting better all the time. <em>Current Directions in Psychological Science, 12</em>(2), 66 to 69: <a href="https://journals.sagepub.com/doi/10.1111/1467-8721.01228">journals.sagepub.com</a></p>
+  </div>
+
+  <footer><a href="index.html">Back to Moon Majic</a> &middot; <a href="../index.html">Witchy Things</a></footer>
+
+</div>
+</body>
+</html>
